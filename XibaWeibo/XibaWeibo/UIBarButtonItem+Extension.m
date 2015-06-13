@@ -10,7 +10,16 @@
 
 @implementation UIBarButtonItem (Extension)
 
-
+/**
+ *  封装一个item公共项
+ *
+ *  @param target     对应的控制器
+ *  @param action     点击事件
+ *  @param image      正常下图片
+ *  @param hightImage 点击时图片
+ *
+ *  @return <#return value description#>
+ */
 +(UIBarButtonItem *)itemWithAction:(id)target action:(SEL)action imageName:(NSString *)image highImageName:(NSString *)hightImage
 {
     //自定义一个按钮

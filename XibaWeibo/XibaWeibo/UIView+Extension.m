@@ -1,0 +1,79 @@
+//
+//  UIView+Extension.m
+//  XibaWeibo
+//
+//  Created by bos on 15-6-11.
+//  Copyright (c) 2015年 axiba. All rights reserved.
+//
+
+#import "UIView+Extension.h"
+
+@implementation UIView (Extension)
+
+-(void)setX:(CGFloat)x
+{
+    CGRect frame = self.frame;
+    frame.origin.x = x;
+    self.frame = frame;
+}
+-(CGFloat)x
+{
+    return self.frame.origin.x;
+}
+
+-(void)setY:(CGFloat)y
+{
+    CGRect frame = self.frame;
+    frame.origin.y = y;
+    
+    self.frame = frame;
+}
+-(CGFloat)y
+{
+    return self.frame.origin.y;
+}
+
+-(void)setWidth:(CGFloat)width
+{
+    CGRect frame = self.frame;
+    frame.size.width = width;
+    
+    self.frame = frame;
+}
+-(CGFloat)width
+{
+    return self.frame.size.width;
+}
+
+-(void)setHeight:(CGFloat)height
+{
+    CGRect frame = self.frame;
+    frame.size.height = height;
+    
+    self.frame = frame;
+}
+
+-(void)setSize:(CGSize)size
+{
+    CGRect frame = self.frame;
+    frame.size =size;
+    self.frame = frame;
+}
+-(CGSize)size
+{
+    return self.frame.size;
+}
+
+-(void)setOrign:(CGPoint)orign
+{
+    CGRect frame = self.frame;
+    frame.origin = orign;
+    
+    self.frame = frame;
+}
+-(CGPoint)orign
+{
+    return self.frame.origin;
+}
+
+@end

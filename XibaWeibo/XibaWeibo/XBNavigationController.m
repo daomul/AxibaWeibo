@@ -7,7 +7,6 @@
 //
 
 #import "XBNavigationController.h"
-#import "UIView+Extension.h"
 
 
 @interface XBNavigationController ()
@@ -27,28 +26,9 @@
     {
         viewController.hidesBottomBarWhenPushed = YES;
         
-        //自定义一个按钮
-        UIButton *backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        [backBtn addTarget:self action:@selector(backBtnClick) forControlEvents:UIControlEventTouchUpInside];
-        [backBtn setBackgroundImage:[UIImage imageNamed:@"navigationbar_back"] forState:UIControlStateNormal];
-        [backBtn setBackgroundImage:[UIImage imageNamed:@"navigationbar_back_highlighted"] forState:UIControlStateHighlighted];
+        viewController.navigationItem.leftBarButtonItem = [UIBarButtonItem itemWithAction:self action:@selector(backBtnClick) imageName:@"navigationbar_back" highImageName:@"navigationbar_back_highlighted"];
         
-        //设置baritem 的frame大小[这里通过给UIView增加一个类别，用来增加一个控制frame的类，所以这里可以直接赋值]
-        //CGSize size = backBtn.currentBackgroundImage.size;
-        //backBtn.frame  = CGRectMake(0, 0, size.width, size.height);
-        backBtn.size= backBtn.currentBackgroundImage.size;
-        
-        //自定义一个按钮
-        UIButton *moreBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        [moreBtn addTarget:self action:@selector(moreBtnClick) forControlEvents:UIControlEventTouchUpInside];
-        [moreBtn setBackgroundImage:[UIImage imageNamed:@"navigationbar_more"] forState:UIControlStateNormal];
-        [moreBtn setBackgroundImage:[UIImage imageNamed:@"navigationbar_more_highlighted"] forState:UIControlStateHighlighted];
-        
-        moreBtn.size= moreBtn.currentBackgroundImage.size;
-        
-        
-        viewController.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:backBtn];
-        viewController.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:moreBtn];
+        viewController.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithAction:self action:@selector(moreBtnClick) imageName:@"navigationbar_more" highImageName:@"navigationbar_more_highlighted"];
         
     }
     [super pushViewController:viewController animated:YES];
@@ -62,7 +42,7 @@
 }
 -(void)moreBtnClick
 {
-    [self popViewControllerAnimated:YES];
+    [self popToRootViewControllerAnimated:YES];
 }
 
 

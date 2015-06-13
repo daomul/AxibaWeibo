@@ -27,11 +27,26 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"写私信" style:UIBarButtonItemStylePlain target:self action:@selector(privateMessage)];
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    //注意：这里设置为不可点击时，时机很重要（viewWillAppear才有效果，如果时viewDidLoad的话，则还没有加载到主题），对应的我们在XBNavigationController中设置不可见时的主题样式
+    //self.navigationItem.rightBarButtonItem.enabled = NO;
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - barItem点击事件
+-(void)privateMessage
+{
+    NSLog(@"写私信");
 }
 
 #pragma mark - Table view data source

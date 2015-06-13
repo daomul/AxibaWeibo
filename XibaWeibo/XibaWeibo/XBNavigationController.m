@@ -20,6 +20,28 @@
     // Do any additional setup after loading the view.
 }
 
+/**
+ *  导航控制器初始化时候(第一次使用的时候)
+ */
++(void)initialize
+{
+    //设置主题颜色
+    UIBarButtonItem *barItem = [UIBarButtonItem appearance];
+    
+    //设置普通情况下的文字的颜色和大小
+    NSMutableDictionary *textAtrributes = [NSMutableDictionary dictionary];
+    textAtrributes[NSForegroundColorAttributeName] = [UIColor orangeColor];
+    textAtrributes[NSFontAttributeName] = [UIFont systemFontOfSize:13];
+    [barItem setTitleTextAttributes:textAtrributes forState:UIControlStateNormal];
+    
+    //设置不可用状态下的Baritem
+    NSMutableDictionary *disableAtrributes = [NSMutableDictionary dictionary];
+    disableAtrributes[NSForegroundColorAttributeName] = [UIColor lightGrayColor];
+    disableAtrributes[NSFontAttributeName] = [UIFont systemFontOfSize:13];
+    [barItem setTitleTextAttributes:disableAtrributes forState:UIControlStateDisabled];
+    
+}
+
 -(void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated
 {
     if (self.viewControllers.count > 0)

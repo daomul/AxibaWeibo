@@ -7,6 +7,7 @@
 //
 
 #import "DiscoverViewController.h"
+#import "XBSearchBar.h"
 
 @interface DiscoverViewController ()
 
@@ -26,11 +27,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    //自定义搜索框
+    XBSearchBar *searchBar = [XBSearchBar searchBar];
+    searchBar.width = 300;
+    searchBar.height = 30;
+        
+    self.navigationItem.titleView = searchBar;
 }
 
 - (void)didReceiveMemoryWarning {

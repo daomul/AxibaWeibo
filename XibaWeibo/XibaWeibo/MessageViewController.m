@@ -28,14 +28,15 @@
     [super viewDidLoad];
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"写私信" style:UIBarButtonItemStylePlain target:self action:@selector(privateMessage)];
+    
+    //注意：这里设置为不可点击时，时机很重要（如果是view 已经创建里的话，放在viewWillAppear才有效果，如果时viewDidLoad的话，则还没有加载到主题），对应的我们在XBNavigationController中设置不可见时的主题样式
+    //self.navigationItem.rightBarButtonItem.enabled = NO;
 }
 
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     
-    //注意：这里设置为不可点击时，时机很重要（viewWillAppear才有效果，如果时viewDidLoad的话，则还没有加载到主题），对应的我们在XBNavigationController中设置不可见时的主题样式
-    //self.navigationItem.rightBarButtonItem.enabled = NO;
 }
 
 - (void)didReceiveMemoryWarning {

@@ -55,7 +55,7 @@
     [tabBarVc.tabBarItem setTitleTextAttributes:textAttrs forState:UIControlStateNormal];
     [tabBarVc.tabBarItem setTitleTextAttributes:selectedAttrs forState:UIControlStateSelected];
     
-    tabBarVc.view.backgroundColor =  HWRandomColor;
+    //tabBarVc.view.backgroundColor =  HWRandomColor;(使用view会造成提前创建View)
     
     XBNavigationController *navVC = [[XBNavigationController alloc]initWithRootViewController:tabBarVc];
      [self addChildViewController:navVC];

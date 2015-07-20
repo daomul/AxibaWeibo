@@ -13,8 +13,9 @@
 #import "DiscoverViewController.h"
 #import "ProfileViewController.h"
 #import "XBNavigationController.h"
+#import "XBTabBar.h"
 
-@interface XBTabBarViewController ()
+@interface XBTabBarViewController ()<XBTabBarDelegate>
 
 @end
 
@@ -36,8 +37,11 @@
     ProfileViewController *profile = [[ProfileViewController alloc] init];
     [self addTabBarVc:profile title:@"我" image:@"tabbar_profile" selectedImage:@"tabbar_profile_selected"];
 
+    //更换系统的tabBar（KVC的形式，即使是只读的也可以修改）
+    XBTabBar *tarBar = [[XBTabBar alloc]init];
+    tarBar.delegate = self;
+    [self setValue:tarBar forKey:@"tabBar"];
     
-   
 }
 - (void)addTabBarVc:(UIViewController *)tabBarVc title:(NSString *)title image:(NSString *)image selectedImage:(NSString *)selectedImage
 {
@@ -63,6 +67,15 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma  mark -- XBTarBarDelegate代理方法
+
+-(void)tabBarDidClickButton:(XBTabBar *)tarBar
+{
+    UIViewController *VC = [[UIViewController alloc]init];
+    VC.view.backgroundColor = [UIColor redColor];
+    [self presentViewController:VC animated:YES completion:nil];
 }
 
 /*

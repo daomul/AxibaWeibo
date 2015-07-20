@@ -7,17 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8800F4161B5D16320037F34D /* XBTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 8800F4151B5D16320037F34D /* XBTabBar.m */; };
 		880207111B20858600C31585 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 880207101B20858600C31585 /* main.m */; };
 		880207141B20858600C31585 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 880207131B20858600C31585 /* AppDelegate.m */; };
 		8802071C1B20858600C31585 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8802071B1B20858600C31585 /* Images.xcassets */; };
 		8802072B1B20858700C31585 /* XibaWeiboTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8802072A1B20858700C31585 /* XibaWeiboTests.m */; };
 		880207371B20904100C31585 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 880207361B20904100C31585 /* HomeViewController.m */; };
+		880367D11B2EEF8800F075C3 /* XBTiTleMeumController.m in Sources */ = {isa = PBXBuildFile; fileRef = 880367D01B2EEF8800F075C3 /* XBTiTleMeumController.m */; };
+		881974431B2D487E00C6A4DD /* XBSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 881974421B2D487E00C6A4DD /* XBSearchBar.m */; };
+		881974461B2D95B700C6A4DD /* XBDropdownMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = 881974451B2D95B700C6A4DD /* XBDropdownMenuController.m */; };
 		8820021B1B2867BD0044E953 /* XBTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8820021A1B2867BD0044E953 /* XBTabBarViewController.m */; };
 		8820021E1B2868FD0044E953 /* MessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8820021D1B2868FD0044E953 /* MessageViewController.m */; };
 		882002211B2869110044E953 /* DiscoverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 882002201B2869110044E953 /* DiscoverViewController.m */; };
 		882002241B2869270044E953 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 882002231B2869270044E953 /* ProfileViewController.m */; };
 		882002291B286E960044E953 /* MessagereviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 882002271B286E960044E953 /* MessagereviewViewController.m */; };
 		8820022A1B286E960044E953 /* MessagereviewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 882002281B286E960044E953 /* MessagereviewViewController.xib */; };
+		88444DDA1B2BDCE8009578CC /* UIBarButtonItem+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 88444DD91B2BDCE8009578CC /* UIBarButtonItem+Extension.m */; };
 		88FF943F1B29B5AA00A4B60D /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 88FF943E1B29B5AA00A4B60D /* UIView+Extension.m */; };
 		88FF94431B29BFE200A4B60D /* XBNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88FF94421B29BFE200A4B60D /* XBNavigationController.m */; };
 /* End PBXBuildFile section */
@@ -33,6 +38,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8800F4141B5D16320037F34D /* XBTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBTabBar.h; sourceTree = "<group>"; };
+		8800F4151B5D16320037F34D /* XBTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBTabBar.m; sourceTree = "<group>"; };
 		8802070B1B20858600C31585 /* XibaWeibo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XibaWeibo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8802070F1B20858600C31585 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		880207101B20858600C31585 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -44,6 +51,12 @@
 		8802072A1B20858700C31585 /* XibaWeiboTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XibaWeiboTests.m; sourceTree = "<group>"; };
 		880207351B20904100C31585 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		880207361B20904100C31585 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
+		880367CF1B2EEF8800F075C3 /* XBTiTleMeumController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBTiTleMeumController.h; sourceTree = "<group>"; };
+		880367D01B2EEF8800F075C3 /* XBTiTleMeumController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBTiTleMeumController.m; sourceTree = "<group>"; };
+		881974411B2D487E00C6A4DD /* XBSearchBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBSearchBar.h; sourceTree = "<group>"; };
+		881974421B2D487E00C6A4DD /* XBSearchBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBSearchBar.m; sourceTree = "<group>"; };
+		881974441B2D95B700C6A4DD /* XBDropdownMenuController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBDropdownMenuController.h; sourceTree = "<group>"; };
+		881974451B2D95B700C6A4DD /* XBDropdownMenuController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBDropdownMenuController.m; sourceTree = "<group>"; };
 		882002191B2867BD0044E953 /* XBTabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBTabBarViewController.h; sourceTree = "<group>"; };
 		8820021A1B2867BD0044E953 /* XBTabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBTabBarViewController.m; sourceTree = "<group>"; };
 		8820021C1B2868FD0044E953 /* MessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageViewController.h; sourceTree = "<group>"; };
@@ -55,6 +68,9 @@
 		882002261B286E960044E953 /* MessagereviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessagereviewViewController.h; sourceTree = "<group>"; };
 		882002271B286E960044E953 /* MessagereviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessagereviewViewController.m; sourceTree = "<group>"; };
 		882002281B286E960044E953 /* MessagereviewViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MessagereviewViewController.xib; sourceTree = "<group>"; };
+		88444DD81B2BDCE8009578CC /* UIBarButtonItem+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+Extension.h"; sourceTree = "<group>"; };
+		88444DD91B2BDCE8009578CC /* UIBarButtonItem+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+Extension.m"; sourceTree = "<group>"; };
+		88444DDB1B2BE69C009578CC /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		88FF943D1B29B5AA00A4B60D /* UIView+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Extension.h"; sourceTree = "<group>"; };
 		88FF943E1B29B5AA00A4B60D /* UIView+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Extension.m"; sourceTree = "<group>"; };
 		88FF94411B29BFE200A4B60D /* XBNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBNavigationController.h; sourceTree = "<group>"; };
@@ -100,8 +116,9 @@
 		8802070D1B20858600C31585 /* XibaWeibo */ = {
 			isa = PBXGroup;
 			children = (
+				88444DD51B2BCF2B009578CC /* lib */,
 				88FF943B1B29B38300A4B60D /* Common */,
-				880207341B20901600C31585 /* Class */,
+				880207341B20901600C31585 /* class */,
 				880207121B20858600C31585 /* AppDelegate.h */,
 				880207131B20858600C31585 /* AppDelegate.m */,
 				8802070E1B20858600C31585 /* Supporting Files */,
@@ -115,6 +132,7 @@
 				8802071B1B20858600C31585 /* Images.xcassets */,
 				8802070F1B20858600C31585 /* Info.plist */,
 				880207101B20858600C31585 /* main.m */,
+				88444DDB1B2BE69C009578CC /* PrefixHeader.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -136,19 +154,31 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		880207341B20901600C31585 /* Class */ = {
+		880207341B20901600C31585 /* class */ = {
 			isa = PBXGroup;
 			children = (
+				88444DD61B2BCF69009578CC /* main */,
+				88444DD41B2BCEFA009578CC /* discover */,
+				88444DD31B2BCEEA009578CC /* Home */,
 				88FF94441B29C6E200A4B60D /* Profile */,
 				882002251B286E6A0044E953 /* Message */,
-				880207351B20904100C31585 /* HomeViewController.h */,
-				880207361B20904100C31585 /* HomeViewController.m */,
-				882002191B2867BD0044E953 /* XBTabBarViewController.h */,
-				8820021A1B2867BD0044E953 /* XBTabBarViewController.m */,
-				8820021F1B2869110044E953 /* DiscoverViewController.h */,
-				882002201B2869110044E953 /* DiscoverViewController.m */,
 			);
-			name = Class;
+			name = class;
+			sourceTree = "<group>";
+		};
+		881974401B2D485400C6A4DD /* field */ = {
+			isa = PBXGroup;
+			children = (
+				88FF94411B29BFE200A4B60D /* XBNavigationController.h */,
+				88FF94421B29BFE200A4B60D /* XBNavigationController.m */,
+				881974411B2D487E00C6A4DD /* XBSearchBar.h */,
+				881974421B2D487E00C6A4DD /* XBSearchBar.m */,
+				881974441B2D95B700C6A4DD /* XBDropdownMenuController.h */,
+				881974451B2D95B700C6A4DD /* XBDropdownMenuController.m */,
+				8800F4141B5D16320037F34D /* XBTabBar.h */,
+				8800F4151B5D16320037F34D /* XBTabBar.m */,
+			);
+			name = field;
 			sourceTree = "<group>";
 		};
 		882002251B286E6A0044E953 /* Message */ = {
@@ -163,10 +193,46 @@
 			name = Message;
 			sourceTree = "<group>";
 		};
+		88444DD31B2BCEEA009578CC /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				880207351B20904100C31585 /* HomeViewController.h */,
+				880207361B20904100C31585 /* HomeViewController.m */,
+				880367CF1B2EEF8800F075C3 /* XBTiTleMeumController.h */,
+				880367D01B2EEF8800F075C3 /* XBTiTleMeumController.m */,
+			);
+			name = Home;
+			sourceTree = "<group>";
+		};
+		88444DD41B2BCEFA009578CC /* discover */ = {
+			isa = PBXGroup;
+			children = (
+				8820021F1B2869110044E953 /* DiscoverViewController.h */,
+				882002201B2869110044E953 /* DiscoverViewController.m */,
+			);
+			name = discover;
+			sourceTree = "<group>";
+		};
+		88444DD51B2BCF2B009578CC /* lib */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = lib;
+			sourceTree = "<group>";
+		};
+		88444DD61B2BCF69009578CC /* main */ = {
+			isa = PBXGroup;
+			children = (
+				882002191B2867BD0044E953 /* XBTabBarViewController.h */,
+				8820021A1B2867BD0044E953 /* XBTabBarViewController.m */,
+			);
+			name = main;
+			sourceTree = "<group>";
+		};
 		88FF943B1B29B38300A4B60D /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				88FF94401B29BF9A00A4B60D /* Base */,
+				881974401B2D485400C6A4DD /* field */,
 				88FF943C1B29B38A00A4B60D /* Category */,
 			);
 			name = Common;
@@ -177,17 +243,10 @@
 			children = (
 				88FF943D1B29B5AA00A4B60D /* UIView+Extension.h */,
 				88FF943E1B29B5AA00A4B60D /* UIView+Extension.m */,
+				88444DD81B2BDCE8009578CC /* UIBarButtonItem+Extension.h */,
+				88444DD91B2BDCE8009578CC /* UIBarButtonItem+Extension.m */,
 			);
 			name = Category;
-			sourceTree = "<group>";
-		};
-		88FF94401B29BF9A00A4B60D /* Base */ = {
-			isa = PBXGroup;
-			children = (
-				88FF94411B29BFE200A4B60D /* XBNavigationController.h */,
-				88FF94421B29BFE200A4B60D /* XBNavigationController.m */,
-			);
-			name = Base;
 			sourceTree = "<group>";
 		};
 		88FF94441B29C6E200A4B60D /* Profile */ = {
@@ -298,12 +357,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8800F4161B5D16320037F34D /* XBTabBar.m in Sources */,
+				880367D11B2EEF8800F075C3 /* XBTiTleMeumController.m in Sources */,
+				881974461B2D95B700C6A4DD /* XBDropdownMenuController.m in Sources */,
 				88FF943F1B29B5AA00A4B60D /* UIView+Extension.m in Sources */,
 				8820021B1B2867BD0044E953 /* XBTabBarViewController.m in Sources */,
 				882002211B2869110044E953 /* DiscoverViewController.m in Sources */,
 				8820021E1B2868FD0044E953 /* MessageViewController.m in Sources */,
 				880207141B20858600C31585 /* AppDelegate.m in Sources */,
+				881974431B2D487E00C6A4DD /* XBSearchBar.m in Sources */,
 				88FF94431B29BFE200A4B60D /* XBNavigationController.m in Sources */,
+				88444DDA1B2BDCE8009578CC /* UIBarButtonItem+Extension.m in Sources */,
 				882002241B2869270044E953 /* ProfileViewController.m in Sources */,
 				880207111B20858600C31585 /* main.m in Sources */,
 				882002291B286E960044E953 /* MessagereviewViewController.m in Sources */,
@@ -411,6 +475,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/XibaWeibo/PrefixHeader.pch";
 				INFOPLIST_FILE = XibaWeibo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -423,6 +489,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/XibaWeibo/PrefixHeader.pch";
 				INFOPLIST_FILE = XibaWeibo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

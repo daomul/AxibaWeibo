@@ -1,80 +1,28 @@
 //
-//  HomeViewController.m
+//  XBTiTleMeumController.m
 //  XibaWeibo
 //
-//  Created by bos on 15-6-4.
+//  Created by bos on 15-6-15.
 //  Copyright (c) 2015年 axiba. All rights reserved.
 //
 
-#import "HomeViewController.h"
-#import "XBDropdownMenuController.h"
 #import "XBTiTleMeumController.h"
 
-@interface HomeViewController ()
+@interface XBTiTleMeumController ()
 
 @end
 
-@implementation HomeViewController
+@implementation XBTiTleMeumController
 
-- (instancetype)initWithStyle:(UITableViewStyle)style
-{
-    self = [super initWithStyle:style];
-    if (self)
-    {
-       // Custom initialization
-    }
-     return self;
-}
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.navigationItem.leftBarButtonItem = [UIBarButtonItem itemWithAction:self action:@selector(friendSearch) imageName:@"navigationbar_friendsearch" highImageName:@"navigationbar_friendsearch_highlighted"];
-    self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithAction:self action:@selector(scanPop) imageName:@"navigationbar_pop" highImageName:@"navigationbar_pop_highlighted"];
+    // Uncomment the following line to preserve selection between presentations.
+    // self.clearsSelectionOnViewWillAppear = NO;
     
-    //中间的下拉按钮
-    UIButton *hButton = [[UIButton alloc]init];
-    hButton.width = 150;
-    hButton.height = 30;
-    
-    [hButton setTitle:@"首页" forState:UIControlStateNormal];
-    [hButton setTitleColor:[UIColor orangeColor] forState:UIControlStateNormal];
-    hButton.titleLabel.font = [UIFont systemFontOfSize:17];
-    [hButton setImage: [UIImage imageNamed:@"navigationbar_arrow_down"] forState:UIControlStateNormal];
-    
-    //控制按钮内部的布局（图片和文字）
-    hButton.imageEdgeInsets = UIEdgeInsetsMake(0, 70, 0, 0);
-    hButton.titleEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 40);
-    
-    //按钮点击
-    [hButton addTarget:self action:@selector(titleBtnClick:) forControlEvents:UIControlEventTouchUpInside];
-    self.navigationItem.titleView = hButton;
-    
+    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
-
-#pragma mark - 点击事件
--(void)titleBtnClick:(UIButton *)titleButton
-{
-    XBDropdownMenuController *dropMenu = [XBDropdownMenuController menu];
-    
-    XBTiTleMeumController *titleMenu = [[XBTiTleMeumController alloc]init];
-    titleMenu.view.height = 150;
-    titleMenu.view.width = 150;
-    dropMenu.contentController = titleMenu;
-    
-    [dropMenu showForm:titleButton];
-}
-
-#pragma mark - baritem 点击事件
--(void)friendSearch
-{
-    NSLog(@"friendSearch");
-}
-
--(void)scanPop
-{
-    NSLog(@"scanPop");
-}
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -86,24 +34,36 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
 #warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 #warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 0;
+    return 3;
 }
 
-/*
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
     
-    // Configure the cell...
+    static  NSString *identiferID = @"cell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identiferID];
+    
+    if (!cell) {
+        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identiferID];
+    }
+    
+    if (indexPath.row == 0) {
+        cell.textLabel.text = @"好友";
+    } else if (indexPath.row == 1) {
+        cell.textLabel.text = @"密友";
+    } else if (indexPath.row == 2) {
+        cell.textLabel.text = @"个别";
+    }
     
     return cell;
 }
-*/
+
 
 /*
 // Override to support conditional editing of the table view.

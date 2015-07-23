@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		685682191B60A482008EAF0E /* NewfeatureController.m in Sources */ = {isa = PBXBuildFile; fileRef = 685682181B60A482008EAF0E /* NewfeatureController.m */; };
 		8800F4161B5D16320037F34D /* XBTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 8800F4151B5D16320037F34D /* XBTabBar.m */; };
 		880207111B20858600C31585 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 880207101B20858600C31585 /* main.m */; };
 		880207141B20858600C31585 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 880207131B20858600C31585 /* AppDelegate.m */; };
@@ -38,6 +39,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		685682171B60A482008EAF0E /* NewfeatureController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewfeatureController.h; sourceTree = "<group>"; };
+		685682181B60A482008EAF0E /* NewfeatureController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewfeatureController.m; sourceTree = "<group>"; };
 		8800F4141B5D16320037F34D /* XBTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBTabBar.h; sourceTree = "<group>"; };
 		8800F4151B5D16320037F34D /* XBTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBTabBar.m; sourceTree = "<group>"; };
 		8802070B1B20858600C31585 /* XibaWeibo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XibaWeibo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -95,6 +98,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		685682161B60A436008EAF0E /* Newfeature(新特性) */ = {
+			isa = PBXGroup;
+			children = (
+				685682171B60A482008EAF0E /* NewfeatureController.h */,
+				685682181B60A482008EAF0E /* NewfeatureController.m */,
+			);
+			name = "Newfeature(新特性)";
+			sourceTree = "<group>";
+		};
 		880207021B20858600C31585 = {
 			isa = PBXGroup;
 			children = (
@@ -157,16 +169,17 @@
 		880207341B20901600C31585 /* class */ = {
 			isa = PBXGroup;
 			children = (
-				88444DD61B2BCF69009578CC /* main */,
-				88444DD41B2BCEFA009578CC /* discover */,
-				88444DD31B2BCEEA009578CC /* Home */,
-				88FF94441B29C6E200A4B60D /* Profile */,
-				882002251B286E6A0044E953 /* Message */,
+				685682161B60A436008EAF0E /* Newfeature(新特性) */,
+				88444DD61B2BCF69009578CC /* main(主面板) */,
+				88444DD41B2BCEFA009578CC /* discover(发现界面) */,
+				88444DD31B2BCEEA009578CC /* Home(首页界面) */,
+				88FF94441B29C6E200A4B60D /* Profile(个人界面) */,
+				882002251B286E6A0044E953 /* Message(消息界面) */,
 			);
 			name = class;
 			sourceTree = "<group>";
 		};
-		881974401B2D485400C6A4DD /* field */ = {
+		881974401B2D485400C6A4DD /* field(控件封装) */ = {
 			isa = PBXGroup;
 			children = (
 				88FF94411B29BFE200A4B60D /* XBNavigationController.h */,
@@ -178,10 +191,10 @@
 				8800F4141B5D16320037F34D /* XBTabBar.h */,
 				8800F4151B5D16320037F34D /* XBTabBar.m */,
 			);
-			name = field;
+			name = "field(控件封装)";
 			sourceTree = "<group>";
 		};
-		882002251B286E6A0044E953 /* Message */ = {
+		882002251B286E6A0044E953 /* Message(消息界面) */ = {
 			isa = PBXGroup;
 			children = (
 				8820021C1B2868FD0044E953 /* MessageViewController.h */,
@@ -190,10 +203,10 @@
 				882002271B286E960044E953 /* MessagereviewViewController.m */,
 				882002281B286E960044E953 /* MessagereviewViewController.xib */,
 			);
-			name = Message;
+			name = "Message(消息界面)";
 			sourceTree = "<group>";
 		};
-		88444DD31B2BCEEA009578CC /* Home */ = {
+		88444DD31B2BCEEA009578CC /* Home(首页界面) */ = {
 			isa = PBXGroup;
 			children = (
 				880207351B20904100C31585 /* HomeViewController.h */,
@@ -201,16 +214,16 @@
 				880367CF1B2EEF8800F075C3 /* XBTiTleMeumController.h */,
 				880367D01B2EEF8800F075C3 /* XBTiTleMeumController.m */,
 			);
-			name = Home;
+			name = "Home(首页界面)";
 			sourceTree = "<group>";
 		};
-		88444DD41B2BCEFA009578CC /* discover */ = {
+		88444DD41B2BCEFA009578CC /* discover(发现界面) */ = {
 			isa = PBXGroup;
 			children = (
 				8820021F1B2869110044E953 /* DiscoverViewController.h */,
 				882002201B2869110044E953 /* DiscoverViewController.m */,
 			);
-			name = discover;
+			name = "discover(发现界面)";
 			sourceTree = "<group>";
 		};
 		88444DD51B2BCF2B009578CC /* lib */ = {
@@ -220,25 +233,25 @@
 			name = lib;
 			sourceTree = "<group>";
 		};
-		88444DD61B2BCF69009578CC /* main */ = {
+		88444DD61B2BCF69009578CC /* main(主面板) */ = {
 			isa = PBXGroup;
 			children = (
 				882002191B2867BD0044E953 /* XBTabBarViewController.h */,
 				8820021A1B2867BD0044E953 /* XBTabBarViewController.m */,
 			);
-			name = main;
+			name = "main(主面板)";
 			sourceTree = "<group>";
 		};
 		88FF943B1B29B38300A4B60D /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				881974401B2D485400C6A4DD /* field */,
-				88FF943C1B29B38A00A4B60D /* Category */,
+				881974401B2D485400C6A4DD /* field(控件封装) */,
+				88FF943C1B29B38A00A4B60D /* Category(类别) */,
 			);
 			name = Common;
 			sourceTree = "<group>";
 		};
-		88FF943C1B29B38A00A4B60D /* Category */ = {
+		88FF943C1B29B38A00A4B60D /* Category(类别) */ = {
 			isa = PBXGroup;
 			children = (
 				88FF943D1B29B5AA00A4B60D /* UIView+Extension.h */,
@@ -246,16 +259,16 @@
 				88444DD81B2BDCE8009578CC /* UIBarButtonItem+Extension.h */,
 				88444DD91B2BDCE8009578CC /* UIBarButtonItem+Extension.m */,
 			);
-			name = Category;
+			name = "Category(类别)";
 			sourceTree = "<group>";
 		};
-		88FF94441B29C6E200A4B60D /* Profile */ = {
+		88FF94441B29C6E200A4B60D /* Profile(个人界面) */ = {
 			isa = PBXGroup;
 			children = (
 				882002221B2869270044E953 /* ProfileViewController.h */,
 				882002231B2869270044E953 /* ProfileViewController.m */,
 			);
-			name = Profile;
+			name = "Profile(个人界面)";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -368,6 +381,7 @@
 				881974431B2D487E00C6A4DD /* XBSearchBar.m in Sources */,
 				88FF94431B29BFE200A4B60D /* XBNavigationController.m in Sources */,
 				88444DDA1B2BDCE8009578CC /* UIBarButtonItem+Extension.m in Sources */,
+				685682191B60A482008EAF0E /* NewfeatureController.m in Sources */,
 				882002241B2869270044E953 /* ProfileViewController.m in Sources */,
 				880207111B20858600C31585 /* main.m in Sources */,
 				882002291B286E960044E953 /* MessagereviewViewController.m in Sources */,

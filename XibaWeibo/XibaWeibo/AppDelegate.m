@@ -10,6 +10,7 @@
 
 #import "AppDelegate.h"
 #import "XBTabBarViewController.h"
+#import "NewfeatureController.h"
 
 @interface AppDelegate ()
 
@@ -27,7 +28,7 @@
     
     //2、设置根控制器
     UITabBarController *tabBarVC = [[XBTabBarViewController alloc]init];
-    self.window.rootViewController = tabBarVC;
+    self.window.rootViewController = [[NewfeatureController alloc]init];
     
     [self.window makeKeyAndVisible];
     return YES;

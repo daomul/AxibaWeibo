@@ -8,7 +8,23 @@
 
 #import <UIKit/UIKit.h>
 
+//1、引入本身自己的控制器
+@class XBDropdownMenuController;
+//2、定义一个协议
+@protocol XBDropdownMenuDelegate <NSObject>
+//3、设置协议的可选择性和协议方法
+@optional
+-(void)dropdownMenuDismiss:(XBDropdownMenuController *)menu;
+-(void)dropdownMenuShow:(XBDropdownMenuController *)menu;
+
+
+
+@end
+
 @interface XBDropdownMenuController : UIView
+
+//4、将协议属性放开
+@property (nonatomic,weak) id<XBDropdownMenuDelegate>delegate;
 
 + (instancetype)menu;
 

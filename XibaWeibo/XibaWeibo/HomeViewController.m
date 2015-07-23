@@ -10,7 +10,7 @@
 #import "XBDropdownMenuController.h"
 #import "XBTiTleMeumController.h"
 
-@interface HomeViewController ()
+@interface HomeViewController () <XBDropdownMenuDelegate>
 
 @end
 
@@ -40,6 +40,7 @@
     [hButton setTitleColor:[UIColor orangeColor] forState:UIControlStateNormal];
     hButton.titleLabel.font = [UIFont systemFontOfSize:17];
     [hButton setImage: [UIImage imageNamed:@"navigationbar_arrow_down"] forState:UIControlStateNormal];
+    [hButton setImage:[UIImage imageNamed:@"navigationbar_arrow_up"] forState:UIControlStateSelected];
     
     //控制按钮内部的布局（图片和文字）
     hButton.imageEdgeInsets = UIEdgeInsetsMake(0, 70, 0, 0);
@@ -55,6 +56,7 @@
 -(void)titleBtnClick:(UIButton *)titleButton
 {
     XBDropdownMenuController *dropMenu = [XBDropdownMenuController menu];
+    dropMenu.delegate = self;
     
     XBTiTleMeumController *titleMenu = [[XBTiTleMeumController alloc]init];
     titleMenu.view.height = 150;
@@ -75,6 +77,17 @@
     NSLog(@"scanPop");
 }
 
+#pragma mark -- dropDowndelegate协议方法
+-(void)dropdownMenuDismiss:(XBDropdownMenuController *)menu
+{
+    UIButton *btn = (UIButton *)self.navigationItem.titleView;
+    btn.selected = NO;
+}
+-(void)dropdownMenuShow:(XBDropdownMenuController *)menu
+{
+    UIButton *btn = (UIButton *)self.navigationItem.titleView;
+    btn.selected = YES;
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

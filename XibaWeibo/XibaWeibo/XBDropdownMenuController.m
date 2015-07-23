@@ -90,10 +90,20 @@
     //调整灰色图片的位置(根据标题按钮的位置定位灰色图片的位置)
     self.containerView.centerX = CGRectGetMidX(newFrame);
     self.containerView.y = CGRectGetMaxY(newFrame);
+    
+    //通知外面帮他操作的其他控制器，他要出门啦
+    if ([self.delegate respondsToSelector:@selector(dropdownMenuShow:)]) {
+        [self.delegate dropdownMenuShow:self];
+    }
 }
 -(void)dismiss
 {
     [self removeFromSuperview];
+    
+    //通知外面帮他操作的其他控制器，他要回家消失啦
+    if ([self.delegate respondsToSelector:@selector(dropdownMenuDismiss:)]) {
+        [self.delegate dropdownMenuDismiss:self];
+    }
 }
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event

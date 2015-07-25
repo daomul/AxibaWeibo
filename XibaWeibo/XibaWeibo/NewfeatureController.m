@@ -44,6 +44,10 @@
         NSString *str = [NSString stringWithFormat:@"new_feature_%d",i + 1];
         img.image = [UIImage imageNamed:str];
         
+        if (i  == NFcount - 1) {
+            [self addSomethingByLastView:img];
+        }
+        
         [scrollV addSubview:img];
     }
     
@@ -80,6 +84,54 @@
     self.pageC.currentPage = (int)(page + 0.5);
 }
 
+#pragma mark -- 最后一个view的时候增加内容
+-(void)addSomethingByLastView:(UIImageView *)img
+{
+    //设置背景的image 图片的用户交互性
+    [img setUserInteractionEnabled:YES];
+
+    //按钮1
+    UIButton *btnCheck = [[UIButton alloc]init];
+    [btnCheck setImage:[UIImage imageNamed:@"new_feature_share_false"] forState:UIControlStateNormal];
+    [btnCheck setImage:[UIImage imageNamed:@"new_feature_share_true"] forState:UIControlStateSelected];
+    
+    [btnCheck setTitle:@"分享给大家" forState:UIControlStateNormal];
+    [btnCheck setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    btnCheck.titleLabel.font = [UIFont systemFontOfSize:15];
+    btnCheck.width = 200;
+    btnCheck.height = 30;
+    btnCheck.centerY = img.height * 0.65;
+    btnCheck.centerX = img.width * 0.5;
+    
+    btnCheck.titleEdgeInsets = UIEdgeInsetsMake(0, 10, 0, 0);
+    [btnCheck addTarget:self action:@selector(ShareStart:) forControlEvents:UIControlEventTouchUpInside];
+    [img addSubview:btnCheck];
+    
+    //按钮2
+    UIButton *btnStart = [[UIButton alloc]init];
+    [btnStart setBackgroundImage:[UIImage imageNamed:@"new_feature_finish_button"] forState:UIControlStateNormal];
+    [btnStart setBackgroundImage:[UIImage imageNamed:@"new_feature_finish_button_highlighted"] forState:UIControlStateHighlighted];
+    
+    [btnStart setTitle:@"开始微博" forState:UIControlStateNormal];
+    btnStart.size = btnStart.currentBackgroundImage.size;
+    btnStart.centerX = btnCheck.centerX + 5; //titleEdgeInsets移动了10，这里可以稍微调5一下
+    btnStart.centerY = img.height * 0.75;
+    [btnStart setBackgroundColor:[UIColor redColor]];
+    [btnStart addTarget:self action:@selector(ClickStart:) forControlEvents:UIControlEventTouchUpInside];
+    
+    [img addSubview:btnStart];
+}
+
+#pragma mark -- 按钮点击事件
+-(void)ShareStart:(UIButton *)shareBtn
+{
+    //按钮选中状态取反
+    shareBtn.selected = !shareBtn.isSelected;
+}
+-(void)ClickStart:(UIButton *)clickBtn
+{
+    
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

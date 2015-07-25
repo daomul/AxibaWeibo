@@ -11,6 +11,7 @@
 #import "AppDelegate.h"
 #import "XBTabBarViewController.h"
 #import "NewfeatureController.h"
+#import "XBOAuthViewController.h"
 
 @interface AppDelegate ()
 
@@ -27,8 +28,9 @@
     self.window.frame = [UIScreen mainScreen].bounds;
     
     //2、设置根控制器
+    self.window.rootViewController = [[XBOAuthViewController alloc] init];
     
-    
+    /*
     //2、引入新特性的判断
     
     //2.1 取出沙盒中的版本号
@@ -51,7 +53,7 @@
         [[NSUserDefaults standardUserDefaults]setObject:currnetVersion forKey:key];
         [[NSUserDefaults standardUserDefaults]synchronize];
     }
-    
+    */
     [self.window makeKeyAndVisible];
     return YES;
 }

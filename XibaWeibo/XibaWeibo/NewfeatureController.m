@@ -7,6 +7,7 @@
 //
 
 #import "NewfeatureController.h"
+#import "XBTabBarViewController.h"
 #define NFcount 4
 
 @interface NewfeatureController () <UIScrollViewDelegate>
@@ -130,9 +131,25 @@
 }
 -(void)ClickStart:(UIButton *)clickBtn
 {
+    /*
+     切换控制器的手段
+     1.push：依赖于UINavigationController，控制器的切换是可逆的，比如A切换到B，B又可以回到A
+     2.modal：控制器的切换是可逆的，比如A切换到B，B又可以回到A
+     3.切换window的rootViewController(不使用self.view.window是因为可能会为空)
+     */
+    UIWindow *window = [UIApplication sharedApplication].keyWindow;
+    window.rootViewController = [[XBTabBarViewController alloc]init];
     
+    // modal方式，不建议采取：新特性控制器不会销毁
+    //    XBTabBarViewController *main = [[XBTabBarViewController alloc] init];
+    //    [self presentViewController:main animated:YES completion:nil];
+
 }
 
+-(void)dealloc
+{
+    XBLog(@"dealloc");
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

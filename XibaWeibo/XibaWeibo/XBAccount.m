@@ -10,12 +10,18 @@
 
 @implementation XBAccount
 
+/**
+ *  只有在第一次请求的时候才会调用
+ */
 + (instancetype)accountWithDict:(NSDictionary *)dict
 {
     XBAccount *account = [[self alloc]init];
     account.access_token = dict[@"access_token"];
     account.uid = dict[@"uid"];
     account.expires_in = dict[@"expires_in"];
+    
+    // 获得账号存储的时间（accessToken的产生时间）
+    account.created_time = [NSDate date];
     
     return account;
 }
@@ -30,6 +36,7 @@
     [enCoder encodeObject:self.expires_in forKey:@"expires_in"];
     [enCoder encodeObject:self.uid forKey:@"uid"];
     [enCoder encodeObject:self.created_time forKey:@"created_time"];
+    [enCoder encodeObject:self.UserName forKey:@"UserName"];
 }
 
 /**
@@ -44,6 +51,7 @@
         self.expires_in = [decoder decodeObjectForKey:@"expires_in"];
         self.uid = [decoder decodeObjectForKey:@"uid"];
         self.created_time = [decoder decodeObjectForKey:@"created_time"];
+        self.UserName = [decoder decodeObjectForKey:@"UserName"];
     }
     return self;
 }

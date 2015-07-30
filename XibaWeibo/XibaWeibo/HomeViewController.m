@@ -9,6 +9,8 @@
 #import "HomeViewController.h"
 #import "XBDropdownMenuController.h"
 #import "XBTiTleMeumController.h"
+#import "AFNetworking.h"
+#import "XBAccountTool.h"
 
 @interface HomeViewController () <XBDropdownMenuDelegate>
 
@@ -28,6 +30,52 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    //设置导航栏内容
+    [self setNavInfo];
+    
+    //获取用户名称，设置到标题处
+    [self setTitleUserName];
+}
+
+#pragma mark -- 自定义方法(设置以及获取信息等)
+
+/**
+ *  获得导航栏标题处的用户信息（昵称）
+ */
+-(void)setTitleUserName
+{
+    // 1、请求管理者
+    AFHTTPRequestOperationManager *mgr = [AFHTTPRequestOperationManager manager];
+    
+    // 2、拼接请求参数
+    XBAccount *account = [XBAccountTool account];
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    params[@"access_token"] = account.access_token;
+    params[@"uid"] = account.uid;
+    
+    // 3、发送请求
+    [mgr GET:@"https://api.weibo.com/2/users/show.json" parameters:params
+     success:^(AFHTTPRequestOperation *operation, NSDictionary *responseObject) {
+        
+         //标题按钮
+         UIButton *tButton = (UIButton *)self.navigationItem.titleView;
+         //设置名字
+         [tButton setTitle:responseObject[@"name"] forState:UIControlStateNormal];
+         //将名字写入模型
+         account.UserName = responseObject[@"name"];
+         //将模型数据重新写入沙盒
+         [XBAccountTool saveAccount:account];
+         
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        XBLog(@"请求失败-%@", error);
+    }];
+}
+
+/**
+ *  设置导航栏内容（包括标题按钮等）
+ */
+-(void)setNavInfo
+{
     self.navigationItem.leftBarButtonItem = [UIBarButtonItem itemWithAction:self action:@selector(friendSearch) imageName:@"navigationbar_friendsearch" highImageName:@"navigationbar_friendsearch_highlighted"];
     self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithAction:self action:@selector(scanPop) imageName:@"navigationbar_pop" highImageName:@"navigationbar_pop_highlighted"];
     
@@ -49,7 +97,6 @@
     //按钮点击
     [hButton addTarget:self action:@selector(titleBtnClick:) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.titleView = hButton;
-    
 }
 
 #pragma mark - 点击事件

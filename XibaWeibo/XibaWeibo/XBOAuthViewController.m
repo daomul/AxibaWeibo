@@ -8,6 +8,9 @@
 
 #import "XBOAuthViewController.h"
 #import "AFNetworking.h"
+#import "MBProgressHUD+MJ.h"
+#import "XBAccountTool.h"
+#import "XBAccount.h"
 
 @interface XBOAuthViewController ()<UIWebViewDelegate>
 
@@ -89,12 +92,42 @@
     params[@"code"] = code;
     
     // 3.发送请求
-    [mgr POST:@"https://api.weibo.com/oauth2/access_token" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [mgr POST:@"https://api.weibo.com/oauth2/access_token" parameters:params success:^(AFHTTPRequestOperation *operation, NSDictionary *responseObject) {
         XBLog(@"请求成功-%@", responseObject);
+        
+        //3.1 将取得的账号字典数据 --> 模型
+        XBAccount *account = [XBAccount accountWithDict:responseObject];
+        //3.2 将模型 --> 沙盒
+        [XBAccountTool saveAccount:account];
+        //3.3 切换主控制器
+        UIWindow *window = [UIApplication sharedApplication].keyWindow;
+        [window switchRootViewController];
+        
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         XBLog(@"请求失败-%@", error);
     }];
 }
+
+#pragma mark -- webView代理方法
+
+-(void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
+{
+    [MBProgressHUD hideHUD];
+}
+-(void)webViewDidStartLoad:(UIWebView *)webView
+{
+    [MBProgressHUD showMessage:@"正在加载..."];
+}
+-(void)webViewDidFinishLoad:(UIWebView *)webView
+{
+    [MBProgressHUD hideHUD];
+}
+
+
+
+
+
+
 
 
 

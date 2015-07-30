@@ -10,5 +10,10 @@
 
 @interface UIWindow (Extension)
 
+/**
+ *  UIWindow:切换主控制器
+ *  沙盒中版本号存取，根据需要显示新特性，从而切换主控制器
+ *  @return nil
+ */
 -(void)switchRootViewController;
 @end

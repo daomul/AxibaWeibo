@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		683B98F71B6B92C1002001E7 /* XBTitleButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 683B98F61B6B92C1002001E7 /* XBTitleButton.m */; };
 		6846AD7E1B6371B600CC2131 /* XBOAuthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6846AD7D1B6371B600CC2131 /* XBOAuthViewController.m */; };
 		685682191B60A482008EAF0E /* NewfeatureController.m in Sources */ = {isa = PBXBuildFile; fileRef = 685682181B60A482008EAF0E /* NewfeatureController.m */; };
 		685702A61B6760F2004F10C2 /* MBProgressHUD+MJ.m in Sources */ = {isa = PBXBuildFile; fileRef = 685702A21B6760F2004F10C2 /* MBProgressHUD+MJ.m */; };
@@ -56,6 +57,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		683B98F51B6B92C1002001E7 /* XBTitleButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBTitleButton.h; sourceTree = "<group>"; };
+		683B98F61B6B92C1002001E7 /* XBTitleButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBTitleButton.m; sourceTree = "<group>"; };
 		6846AD7C1B6371B600CC2131 /* XBOAuthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBOAuthViewController.h; sourceTree = "<group>"; };
 		6846AD7D1B6371B600CC2131 /* XBOAuthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBOAuthViewController.m; sourceTree = "<group>"; };
 		685682171B60A482008EAF0E /* NewfeatureController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewfeatureController.h; sourceTree = "<group>"; };
@@ -316,6 +319,8 @@
 				881974451B2D95B700C6A4DD /* XBDropdownMenuController.m */,
 				8800F4141B5D16320037F34D /* XBTabBar.h */,
 				8800F4151B5D16320037F34D /* XBTabBar.m */,
+				683B98F51B6B92C1002001E7 /* XBTitleButton.h */,
+				683B98F61B6B92C1002001E7 /* XBTitleButton.m */,
 			);
 			name = "field(控件封装)";
 			sourceTree = "<group>";
@@ -512,6 +517,7 @@
 				8820021B1B2867BD0044E953 /* XBTabBarViewController.m in Sources */,
 				6869A4E61B637DCA00825798 /* AFHTTPSessionManager.m in Sources */,
 				685702AC1B67619C004F10C2 /* XBAccount.m in Sources */,
+				683B98F71B6B92C1002001E7 /* XBTitleButton.m in Sources */,
 				882002211B2869110044E953 /* DiscoverViewController.m in Sources */,
 				8820021E1B2868FD0044E953 /* MessageViewController.m in Sources */,
 				6869A4E71B637DCA00825798 /* AFNetworkReachabilityManager.m in Sources */,

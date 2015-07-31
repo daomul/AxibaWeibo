@@ -11,6 +11,7 @@
 #import "XBTiTleMeumController.h"
 #import "AFNetworking.h"
 #import "XBAccountTool.h"
+#import "XBTitleButton.h"
 
 @interface HomeViewController () <XBDropdownMenuDelegate>
 
@@ -67,7 +68,7 @@
          [XBAccountTool saveAccount:account];
          
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        XBLog(@"请求失败-%@", error);
+        XBLog(@"请求失败-%@", error); 
     }];
 }
 
@@ -76,25 +77,17 @@
  */
 -(void)setNavInfo
 {
+    //1. 设置导航栏
     self.navigationItem.leftBarButtonItem = [UIBarButtonItem itemWithAction:self action:@selector(friendSearch) imageName:@"navigationbar_friendsearch" highImageName:@"navigationbar_friendsearch_highlighted"];
     self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithAction:self action:@selector(scanPop) imageName:@"navigationbar_pop" highImageName:@"navigationbar_pop_highlighted"];
     
-    //中间的下拉按钮
-    UIButton *hButton = [[UIButton alloc]init];
-    hButton.width = 150;
-    hButton.height = 30;
+    //2.设置中间的下拉按钮
+    XBTitleButton *hButton = [[XBTitleButton alloc]init];
     
-    [hButton setTitle:@"首页" forState:UIControlStateNormal];
-    [hButton setTitleColor:[UIColor orangeColor] forState:UIControlStateNormal];
-    hButton.titleLabel.font = [UIFont systemFontOfSize:17];
-    [hButton setImage: [UIImage imageNamed:@"navigationbar_arrow_down"] forState:UIControlStateNormal];
-    [hButton setImage:[UIImage imageNamed:@"navigationbar_arrow_up"] forState:UIControlStateSelected];
+    //3. 取得用户数据昵称
+    NSString *userName = [XBAccountTool account].UserName;
+    [hButton setTitle:userName?userName:@"首页" forState:UIControlStateNormal];
     
-    //控制按钮内部的布局（图片和文字）
-    hButton.imageEdgeInsets = UIEdgeInsetsMake(0, 70, 0, 0);
-    hButton.titleEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 40);
-    
-    //按钮点击
     [hButton addTarget:self action:@selector(titleBtnClick:) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.titleView = hButton;
 }
@@ -155,58 +148,5 @@
     return 0;
 }
 
-/*
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
-    
-    // Configure the cell...
-    
-    return cell;
-}
-*/
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

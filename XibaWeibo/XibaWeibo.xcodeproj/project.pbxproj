@@ -24,6 +24,8 @@
 		683B99271B6B943A002001E7 /* UIImageView+HighlightedWebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 683B99151B6B943A002001E7 /* UIImageView+HighlightedWebCache.m */; };
 		683B99281B6B943A002001E7 /* UIImageView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 683B99171B6B943A002001E7 /* UIImageView+WebCache.m */; };
 		683B99291B6B943A002001E7 /* UIView+WebCacheOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 683B99191B6B943A002001E7 /* UIView+WebCacheOperation.m */; };
+		683B992E1B6B962D002001E7 /* XBUserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 683B992D1B6B962D002001E7 /* XBUserModel.m */; };
+		683B99311B6B975A002001E7 /* XBStatusModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 683B99301B6B975A002001E7 /* XBStatusModel.m */; };
 		6846AD7E1B6371B600CC2131 /* XBOAuthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6846AD7D1B6371B600CC2131 /* XBOAuthViewController.m */; };
 		685682191B60A482008EAF0E /* NewfeatureController.m in Sources */ = {isa = PBXBuildFile; fileRef = 685682181B60A482008EAF0E /* NewfeatureController.m */; };
 		685702A61B6760F2004F10C2 /* MBProgressHUD+MJ.m in Sources */ = {isa = PBXBuildFile; fileRef = 685702A21B6760F2004F10C2 /* MBProgressHUD+MJ.m */; };
@@ -108,6 +110,10 @@
 		683B99171B6B943A002001E7 /* UIImageView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+WebCache.m"; sourceTree = "<group>"; };
 		683B99181B6B943A002001E7 /* UIView+WebCacheOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+WebCacheOperation.h"; sourceTree = "<group>"; };
 		683B99191B6B943A002001E7 /* UIView+WebCacheOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+WebCacheOperation.m"; sourceTree = "<group>"; };
+		683B992C1B6B962D002001E7 /* XBUserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBUserModel.h; sourceTree = "<group>"; };
+		683B992D1B6B962D002001E7 /* XBUserModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBUserModel.m; sourceTree = "<group>"; };
+		683B992F1B6B975A002001E7 /* XBStatusModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XBStatusModel.h; path = SDWebImage/XBStatusModel.h; sourceTree = "<group>"; };
+		683B99301B6B975A002001E7 /* XBStatusModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XBStatusModel.m; path = SDWebImage/XBStatusModel.m; sourceTree = "<group>"; };
 		6846AD7C1B6371B600CC2131 /* XBOAuthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBOAuthViewController.h; sourceTree = "<group>"; };
 		6846AD7D1B6371B600CC2131 /* XBOAuthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBOAuthViewController.m; sourceTree = "<group>"; };
 		685682171B60A482008EAF0E /* NewfeatureController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewfeatureController.h; sourceTree = "<group>"; };
@@ -238,6 +244,28 @@
 				683B99191B6B943A002001E7 /* UIView+WebCacheOperation.m */,
 			);
 			path = SDWebImage;
+			sourceTree = "<group>";
+		};
+		683B992A1B6B95FC002001E7 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				683B992C1B6B962D002001E7 /* XBUserModel.h */,
+				683B992D1B6B962D002001E7 /* XBUserModel.m */,
+				683B992F1B6B975A002001E7 /* XBStatusModel.h */,
+				683B99301B6B975A002001E7 /* XBStatusModel.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		683B992B1B6B9603002001E7 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				880207351B20904100C31585 /* HomeViewController.h */,
+				880207361B20904100C31585 /* HomeViewController.m */,
+				880367CF1B2EEF8800F075C3 /* XBTiTleMeumController.h */,
+				880367D01B2EEF8800F075C3 /* XBTiTleMeumController.m */,
+			);
+			name = Controller;
 			sourceTree = "<group>";
 		};
 		6846AD7B1B63718E00CC2131 /* OAuth(微博授权认证) */ = {
@@ -429,10 +457,8 @@
 		88444DD31B2BCEEA009578CC /* Home(首页界面) */ = {
 			isa = PBXGroup;
 			children = (
-				880207351B20904100C31585 /* HomeViewController.h */,
-				880207361B20904100C31585 /* HomeViewController.m */,
-				880367CF1B2EEF8800F075C3 /* XBTiTleMeumController.h */,
-				880367D01B2EEF8800F075C3 /* XBTiTleMeumController.m */,
+				683B992B1B6B9603002001E7 /* Controller */,
+				683B992A1B6B95FC002001E7 /* Model */,
 			);
 			name = "Home(首页界面)";
 			sourceTree = "<group>";
@@ -607,6 +633,7 @@
 				683B99251B6B943A002001E7 /* UIImage+MultiFormat.m in Sources */,
 				88FF943F1B29B5AA00A4B60D /* UIView+Extension.m in Sources */,
 				683B991F1B6B943A002001E7 /* SDWebImageDownloader.m in Sources */,
+				683B992E1B6B962D002001E7 /* XBUserModel.m in Sources */,
 				8820021B1B2867BD0044E953 /* XBTabBarViewController.m in Sources */,
 				683B99261B6B943A002001E7 /* UIImage+WebP.m in Sources */,
 				6869A4E61B637DCA00825798 /* AFHTTPSessionManager.m in Sources */,
@@ -623,6 +650,7 @@
 				6876DCEB1B6A4AAA006B34F2 /* Foundation+Log.m in Sources */,
 				881974431B2D487E00C6A4DD /* XBSearchBar.m in Sources */,
 				683B99241B6B943A002001E7 /* UIImage+GIF.m in Sources */,
+				683B99311B6B975A002001E7 /* XBStatusModel.m in Sources */,
 				683B99281B6B943A002001E7 /* UIImageView+WebCache.m in Sources */,
 				6869A4E91B637DCA00825798 /* AFURLConnectionOperation.m in Sources */,
 				683B991C1B6B943A002001E7 /* SDImageCache.m in Sources */,

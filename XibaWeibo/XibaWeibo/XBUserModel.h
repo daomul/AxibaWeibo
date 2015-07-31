@@ -20,6 +20,6 @@
 @property (nonatomic, copy) NSString *profile_image_url;
 
 /** 实例方法 初始化模型 只执行一次*/
-+(instancetype)initUserWithDict:(NSDictionary *)dict;
+//+(instancetype)initUserWithDict:(NSDictionary *)dict;
 
 @end

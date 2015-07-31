@@ -16,24 +16,25 @@
 #import "XBUserModel.h"
 #import "UIImageView+WebCache.h"
 #import "MBProgressHUD+MJ.h"
+#import "MJExtension.h"
 
 @interface HomeViewController () <XBDropdownMenuDelegate>
 
 //微博数据存储数据
-@property(nonatomic,strong) NSMutableArray *statusArr;
+@property(nonatomic,strong) NSArray *statusArr;
 
 @end
 
 @implementation HomeViewController
 
 #pragma  mark -- 懒加载
--(NSMutableArray *)statusArr
-{
-    if (!_statusArr) {
-        self.statusArr = [NSMutableArray array];
-    }
-    return _statusArr;
-}
+//-(NSMutableArray *)statusArr
+//{
+//    if (!_statusArr) {
+//        self.statusArr = [NSMutableArray array];
+//    }
+//    return _statusArr;
+//}
 
 - (instancetype)initWithStyle:(UITableViewStyle)style
 {
@@ -73,14 +74,17 @@
     // 3.发送请求
     [mgr GET:@"https://api.weibo.com/2/statuses/friends_timeline.json" parameters:params success:^(AFHTTPRequestOperation *operation,
                                                                                                    NSDictionary *responseObject) {
-        //3.1 取得数据中的微博数据
-        NSArray *arr = responseObject[@"statuses"];
+//        //3.1 取得数据中的微博数据
+//        NSArray *arr = responseObject[@"statuses"];
+//        
+//        //3.2 将 "微博字典"数组 转为 "微博模型"数组
+//        for (NSDictionary *dict in arr) {
+//            XBStatusModel *model = [XBStatusModel initStatusWithDict:dict];
+//            [self.statusArr addObject:model];
+//        }
         
-        //3.2 将 "微博字典"数组 转为 "微博模型"数组
-        for (NSDictionary *dict in arr) {
-            XBStatusModel *model = [XBStatusModel initStatusWithDict:dict];
-            [self.statusArr addObject:model];
-        }
+        //直接利用MJExtesion.h来构建模型省却一大堆工作量
+        self.statusArr = [XBStatusModel objectArrayWithKeyValuesArray:responseObject[@"statuses"]];
         
         //3.3 c刷新tableView的数据
         [self.tableView reloadData];
@@ -115,9 +119,10 @@
          //标题按钮
          UIButton *tButton = (UIButton *)self.navigationItem.titleView;
          //设置名字
-         [tButton setTitle:responseObject[@"name"] forState:UIControlStateNormal];
+         XBUserModel *model = [XBUserModel objectWithKeyValues:responseObject];
+         [tButton setTitle:model.name forState:UIControlStateNormal];
          //将名字写入模型
-         account.UserName = responseObject[@"name"];
+         account.UserName = model.name;
          //将模型数据重新写入沙盒
          [XBAccountTool saveAccount:account];
          

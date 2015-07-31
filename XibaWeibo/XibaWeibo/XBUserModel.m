@@ -10,14 +10,14 @@
 
 @implementation XBUserModel
 
-+(instancetype)initUserWithDict:(NSDictionary *)dict
-{
-    XBUserModel *model = [[self alloc]init];
-    model.idstr = dict[@"idstr"];
-    model.name = dict[@"name"];
-    model.profile_image_url = dict[@"profile_image_url"];
-    
-    return model;
-}
+//+(instancetype)initUserWithDict:(NSDictionary *)dict
+//{
+//    XBUserModel *model = [[self alloc]init];
+//    model.idstr = dict[@"idstr"];
+//    model.name = dict[@"name"];
+//    model.profile_image_url = dict[@"profile_image_url"];
+//    
+//    return model;
+//}
 
 @end

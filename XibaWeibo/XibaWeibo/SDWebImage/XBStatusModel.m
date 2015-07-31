@@ -7,20 +7,20 @@
 //
 
 #import "XBStatusModel.h"
-#import "XBUserModel.h"
+//#import "XBUserModel.h"
 
 @implementation XBStatusModel
 
-+(instancetype)initStatusWithDict:(NSDictionary *)dict
-{
-    XBStatusModel *model = [[self alloc]init];
-    model.idstr = dict[@"idstr"];
-    model.text = dict[@"text"];
-    
-    //这里需要注意的是user字段也是一个模型
-    model.user = [XBUserModel initUserWithDict:dict[@"user"]];
-    
-    return model;
-}
+//+(instancetype)initStatusWithDict:(NSDictionary *)dict
+//{
+//    XBStatusModel *model = [[self alloc]init];
+//    model.idstr = dict[@"idstr"];
+//    model.text = dict[@"text"];
+//    
+//    //这里需要注意的是user字段也是一个模型
+//    model.user = [XBUserModel initUserWithDict:dict[@"user"]];
+//    
+//    return model;
+//}
 
 @end

@@ -21,6 +21,6 @@
 @property (nonatomic,strong)XBUserModel *user;
 
 /** 实例方法 初始化模型 只执行一次*/
-+(instancetype)initStatusWithDict:(NSDictionary *)dict;
+//+(instancetype)initStatusWithDict:(NSDictionary *)dict;
 
 @end

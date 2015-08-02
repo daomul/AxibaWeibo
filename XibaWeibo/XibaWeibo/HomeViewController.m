@@ -21,20 +21,20 @@
 @interface HomeViewController () <XBDropdownMenuDelegate>
 
 //微博数据存储数据
-@property(nonatomic,strong) NSArray *statusArr;
+@property(nonatomic,strong) NSMutableArray *statusArr;
 
 @end
 
 @implementation HomeViewController
 
 #pragma  mark -- 懒加载
-//-(NSMutableArray *)statusArr
-//{
-//    if (!_statusArr) {
-//        self.statusArr = [NSMutableArray array];
-//    }
-//    return _statusArr;
-//}
+-(NSMutableArray *)statusArr
+{
+    if (!_statusArr) {
+        self.statusArr = [NSMutableArray array];
+    }
+    return _statusArr;
+}
 
 - (instancetype)initWithStyle:(UITableViewStyle)style
 {
@@ -55,47 +55,65 @@
     [self setTitleUserName];
     
     //加载微博列表数据
-    [self loadStatusDateList];
+    //[self loadStatusDateList];
+    
+    //集成刷新控件
+    [self refreshStateDatreList];
 }
 
 #pragma mark -- 加载微博数据
--(void)loadStatusDateList
+-(void)refreshStateDatreList
+{
+    UIRefreshControl *control = [[UIRefreshControl alloc]init];
+    [control addTarget:self action:@selector(refreshStateChange:) forControlEvents:UIControlEventValueChanged];
+    [self.tableView addSubview:control];
+}
+-(void)refreshStateChange:(UIRefreshControl *)control
 {
     [MBProgressHUD showMessage:@"正在加载..."];
     
     // 1.请求管理者
     AFHTTPRequestOperationManager *mgr = [AFHTTPRequestOperationManager manager];
     
-     // 2.拼接请求参数
+    // 2.拼接请求参数
     XBAccount *account = [XBAccountTool account];
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     params[@"access_token"] = account.access_token;
-
+    
+    // 取出最前面的微博（最新的微博，ID最大的微博）
+    XBStatusModel *first = [self.statusArr firstObject];
+    if (first) {
+        // 若指定此参数，则返回ID比since_id大的微博（即比since_id时间晚的微博），默认为0
+        params[@"since_id"] = first.idstr;
+    }
+    
     // 3.发送请求
     [mgr GET:@"https://api.weibo.com/2/statuses/friends_timeline.json" parameters:params success:^(AFHTTPRequestOperation *operation,
                                                                                                    NSDictionary *responseObject) {
-//        //3.1 取得数据中的微博数据
-//        NSArray *arr = responseObject[@"statuses"];
-//        
-//        //3.2 将 "微博字典"数组 转为 "微博模型"数组
-//        for (NSDictionary *dict in arr) {
-//            XBStatusModel *model = [XBStatusModel initStatusWithDict:dict];
-//            [self.statusArr addObject:model];
-//        }
         
-        //直接利用MJExtesion.h来构建模型省却一大堆工作量
-        self.statusArr = [XBStatusModel objectArrayWithKeyValuesArray:responseObject[@"statuses"]];
+        //3.1 直接利用MJExtesion.h来构建模型省却一大堆工作量
+        NSArray *newStatusArr = [XBStatusModel objectArrayWithKeyValuesArray:responseObject[@"statuses"]];
+        
+        // 3.2 将最新的微博数据，添加到总数组的最前面
+        NSRange range = NSMakeRange(0, newStatusArr.count);
+        NSIndexSet *set = [NSIndexSet indexSetWithIndexesInRange:range];
+        [self.statusArr insertObjects:newStatusArr atIndexes:set];
         
         //3.3 c刷新tableView的数据
         [self.tableView reloadData];
         
+        //3.4 刷新后要结束刷新动作
+        [control endRefreshing];
+        
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         XBLog(@"请求数据失败");
+        
+        //结束刷新
+        [control endRefreshing];
     }];
     
     [MBProgressHUD hideHUD];
 }
-
 #pragma mark -- 自定义方法(设置以及获取信息等)
 
 /**

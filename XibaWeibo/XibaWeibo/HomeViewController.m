@@ -60,6 +60,11 @@
     
     //集成上拉刷新控件
     [self refreshUpStateDateList];
+    
+    //定时获得未读数据
+    NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(getUnreadCount) userInfo:nil repeats:YES];
+    // !!主线程也会抽时间处理一下timer（不管主线程是否正在执行其他事件操作）——不加的
+    [[NSRunLoop mainRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
 }
 
 #pragma mark -- 加载微博数据
@@ -138,6 +143,7 @@
     }];
     
 }
+
 /**
  *  刷新更多数据
  */
@@ -177,7 +183,7 @@
         self.tableView.tableFooterView.hidden = YES;
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        XBLog(@"请求数据失败");
+        XBLog(@"网络请求失败,请稍后再试");
         
         //结束刷新
         self.tableView.tableFooterView.hidden = YES;
@@ -185,12 +191,54 @@
 
 }
 
+/**
+ *  获得未读微博数据
+ */
+-(void)getUnreadCount
+{
+    // 1、请求管理者
+    AFHTTPRequestOperationManager *mgr = [AFHTTPRequestOperationManager manager];
+    
+    // 2、拼接请求参数
+    XBAccount *account = [XBAccountTool account];
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    params[@"access_token"] = account.access_token;
+    params[@"uid"] = account.uid;
+    
+    // 3、发送请求
+    [mgr GET:@"https://rm.api.weibo.com/2/remind/unread_count.json" parameters:params
+     success:^(AFHTTPRequestOperation *operation, NSDictionary *responseObject) {
+         
+         // @20 --> @"20"
+         // NSNumber --> NSString
+         // 设置提醒数字(微博的未读数)
+         NSString *status = [responseObject[@"status"] description];
+         if ([status isEqualToString:@"0"]) {
+             self.tabBarItem.badgeValue = nil;
+             [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
+         }else
+         {
+             self.tabBarItem.badgeValue = status;
+             [UIApplication sharedApplication].applicationIconBadgeNumber = status.intValue;
+         }
+         
+     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+         XBLog(@"请求失败-%@", error);
+     }];
+}
+
+
 #pragma mark -- 自定义方法(设置以及获取信息等)
+
 /**
  *  显示刷新了多少条新数据
  */
 -(void)showNewStatusCount:(int)count
 {
+    //刷新成功的时候，去除tabBar的下标和icon的角标
+    self.tabBarItem.badgeValue = nil;
+    [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
+    
     //1.创建1个label
     UILabel *label = [[UILabel alloc]init];
     label.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"timeline_new_status_background"]];
@@ -363,6 +411,10 @@
     return cell;
 }
 #pragma mark -- scrollView 的协议方法
+
+/**
+ * 上拉刷新时调用的协议方法
+ */
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
     CGFloat offsetY = scrollView.contentOffset.y;

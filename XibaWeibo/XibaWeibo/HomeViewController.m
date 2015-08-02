@@ -54,9 +54,6 @@
     //获取用户名称，设置到标题处
     [self setTitleUserName];
     
-    //加载微博列表数据
-    //[self loadStatusDateList];
-    
     //集成刷新控件
     [self refreshStateDatreList];
 }
@@ -64,14 +61,18 @@
 #pragma mark -- 加载微博数据
 -(void)refreshStateDatreList
 {
+    //1.加载刷新控件，下拉刷新
     UIRefreshControl *control = [[UIRefreshControl alloc]init];
     [control addTarget:self action:@selector(refreshStateChange:) forControlEvents:UIControlEventValueChanged];
     [self.tableView addSubview:control];
+    
+    //2.一进来就默认加载刷新
+    [control beginRefreshing];
+    [self refreshStateChange:control];
+    
 }
 -(void)refreshStateChange:(UIRefreshControl *)control
 {
-    [MBProgressHUD showMessage:@"正在加载..."];
-    
     // 1.请求管理者
     AFHTTPRequestOperationManager *mgr = [AFHTTPRequestOperationManager manager];
     
@@ -105,6 +106,9 @@
         //3.4 刷新后要结束刷新动作
         [control endRefreshing];
         
+        //3.5 显示最新微博数量
+        [self showNewStatusCount:newStatusArr.count];
+        
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         XBLog(@"请求数据失败");
         
@@ -112,10 +116,54 @@
         [control endRefreshing];
     }];
     
-    [MBProgressHUD hideHUD];
 }
 #pragma mark -- 自定义方法(设置以及获取信息等)
-
+/**
+ *  获得导航栏标题处的用户信息（昵称）
+ */
+-(void)showNewStatusCount:(int)count
+{
+    //1.创建1个label
+    UILabel *label = [[UILabel alloc]init];
+    label.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"timeline_new_status_background"]];
+    label.width = [UIScreen mainScreen].bounds.size.width;
+    label.height = 35;
+    
+    //2.设置label的其他属性
+    if (count == 0) {
+        label.text = @"没有新的微博数据，稍后再试";
+    }
+    else{
+        label.text = [NSString stringWithFormat:@"共有%d条新的微博数据",count];
+    }
+    label.textColor = [UIColor whiteColor];
+    label.textAlignment = NSTextAlignmentCenter;
+    label.font = [UIFont systemFontOfSize:16];
+    
+     //3. 将label添加到导航控制器的view中，并且是盖在导航栏下边
+    label.y = 64 - label.height;
+    [self.navigationController.view insertSubview:label belowSubview:self.navigationController.navigationBar];
+    
+     //4.制造动画效果
+    CGFloat duration = 1.0;
+    
+    //4.1 出现动画延迟
+    [UIView animateWithDuration:duration animations:^{
+        
+        label.transform = CGAffineTransformMakeTranslation(0, label.height);
+        
+    } completion:^(BOOL finished) {
+        
+        //4.2 消失动画延迟
+        [UIView animateWithDuration:duration delay:duration options:UIViewAnimationOptionCurveLinear animations:^{
+            
+            label.transform = CGAffineTransformIdentity;
+            
+        } completion:^(BOOL finished) {
+            [label removeFromSuperview];
+        }];
+    }];
+}
 /**
  *  获得导航栏标题处的用户信息（昵称）
  */

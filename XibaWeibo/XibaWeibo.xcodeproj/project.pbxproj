@@ -43,6 +43,8 @@
 		685702A71B6760F2004F10C2 /* MBProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 685702A31B6760F2004F10C2 /* MBProgressHUD.bundle */; };
 		685702A81B6760F2004F10C2 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 685702A51B6760F2004F10C2 /* MBProgressHUD.m */; };
 		685702AC1B67619C004F10C2 /* XBAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = 685702AB1B67619C004F10C2 /* XBAccount.m */; };
+		68616EA41B6DC2E100FC5097 /* XBLoadMoreFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 68616EA31B6DC2E100FC5097 /* XBLoadMoreFooter.m */; };
+		68616EA61B6DC30000FC5097 /* XBLoadMoreFooter.xib in Resources */ = {isa = PBXBuildFile; fileRef = 68616EA51B6DC30000FC5097 /* XBLoadMoreFooter.xib */; };
 		6869A4E41B637DCA00825798 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 6869A4D21B637DCA00825798 /* AFHTTPRequestOperation.m */; };
 		6869A4E51B637DCA00825798 /* AFHTTPRequestOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6869A4D41B637DCA00825798 /* AFHTTPRequestOperationManager.m */; };
 		6869A4E61B637DCA00825798 /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6869A4D61B637DCA00825798 /* AFHTTPSessionManager.m */; };
@@ -159,6 +161,9 @@
 		685702A51B6760F2004F10C2 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		685702AA1B67619C004F10C2 /* XBAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBAccount.h; sourceTree = "<group>"; };
 		685702AB1B67619C004F10C2 /* XBAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBAccount.m; sourceTree = "<group>"; };
+		68616EA21B6DC2E100FC5097 /* XBLoadMoreFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBLoadMoreFooter.h; sourceTree = "<group>"; };
+		68616EA31B6DC2E100FC5097 /* XBLoadMoreFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBLoadMoreFooter.m; sourceTree = "<group>"; };
+		68616EA51B6DC30000FC5097 /* XBLoadMoreFooter.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XBLoadMoreFooter.xib; sourceTree = "<group>"; };
 		6869A4D11B637DCA00825798 /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
 		6869A4D21B637DCA00825798 /* AFHTTPRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPRequestOperation.m; sourceTree = "<group>"; };
 		6869A4D31B637DCA00825798 /* AFHTTPRequestOperationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperationManager.h; sourceTree = "<group>"; };
@@ -390,6 +395,16 @@
 			name = Tool;
 			sourceTree = "<group>";
 		};
+		68616EA11B6DC2AC00FC5097 /* VIew */ = {
+			isa = PBXGroup;
+			children = (
+				68616EA21B6DC2E100FC5097 /* XBLoadMoreFooter.h */,
+				68616EA31B6DC2E100FC5097 /* XBLoadMoreFooter.m */,
+				68616EA51B6DC30000FC5097 /* XBLoadMoreFooter.xib */,
+			);
+			name = VIew;
+			sourceTree = "<group>";
+		};
 		6869A4D01B637DCA00825798 /* AFNetworking */ = {
 			isa = PBXGroup;
 			children = (
@@ -521,6 +536,7 @@
 		88444DD31B2BCEEA009578CC /* Home(首页界面) */ = {
 			isa = PBXGroup;
 			children = (
+				68616EA11B6DC2AC00FC5097 /* VIew */,
 				683B992B1B6B9603002001E7 /* Controller */,
 				683B992A1B6B95FC002001E7 /* Model */,
 			);
@@ -669,6 +685,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8820022A1B286E960044E953 /* MessagereviewViewController.xib in Resources */,
+				68616EA61B6DC30000FC5097 /* XBLoadMoreFooter.xib in Resources */,
 				8802071C1B20858600C31585 /* Images.xcassets in Resources */,
 				685702A71B6760F2004F10C2 /* MBProgressHUD.bundle in Resources */,
 			);
@@ -692,6 +709,7 @@
 				6869A4E41B637DCA00825798 /* AFHTTPRequestOperation.m in Sources */,
 				68CAFD0A1B6A14DE002E2F19 /* UIWindow+Extension.m in Sources */,
 				8800F4161B5D16320037F34D /* XBTabBar.m in Sources */,
+				68616EA41B6DC2E100FC5097 /* XBLoadMoreFooter.m in Sources */,
 				683B994C1B6BB2DB002001E7 /* MJFoundation.m in Sources */,
 				683B994E1B6BB2DB002001E7 /* MJMember.m in Sources */,
 				683B99211B6B943A002001E7 /* SDWebImageManager.m in Sources */,

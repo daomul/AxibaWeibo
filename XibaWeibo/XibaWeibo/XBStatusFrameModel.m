@@ -53,7 +53,7 @@
     /** 头像 **/
     CGFloat headIconWH = 50;
     CGFloat headIconXY = XBStatusCellBorderW;
-    self.headIconViewF = CGRectMake(headIconWH, headIconWH, headIconXY, headIconXY);
+    self.headIconViewF = CGRectMake(headIconXY, headIconXY, headIconWH, headIconWH);
     
     /** 昵称*/
     CGFloat nameX = CGRectGetMaxX(self.headIconViewF) + XBStatusCellBorderW;

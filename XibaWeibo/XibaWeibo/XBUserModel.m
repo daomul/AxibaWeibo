@@ -10,7 +10,7 @@
 
 @implementation XBUserModel
 
--(void)setMemBerType:(int)memBerType
+-(void)setMbtype:(int)memBerType
 {
     _mbtype = memBerType;
     

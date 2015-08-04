@@ -118,7 +118,7 @@
     /** 原创微博整体 */
     self.originalView.frame = statusFrame.originalViewF;
     
-    /** 会员图标 */
+    /** 会员头像 */
     self.headIconView.frame = statusFrame.headIconViewF;
     [self.headIconView sd_setImageWithURL:[NSURL URLWithString:userM.profile_image_url] placeholderImage:[UIImage imageNamed:@"avatar_default_small"]];
     

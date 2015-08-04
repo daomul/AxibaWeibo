@@ -441,7 +441,8 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 70;
+    XBStatusFrameModel *frameModel = self.statusFrameArr[indexPath.row];
+    return frameModel.cellHeight;
 }
 #pragma mark -- scrollView 的协议方法
 

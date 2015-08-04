@@ -10,6 +10,12 @@
 
 @implementation XBUserModel
 
+-(void)setMemBerType:(int)memBerType
+{
+    _mbtype = memBerType;
+    
+    self.isVip = memBerType > 2;
+}
 //+(instancetype)initUserWithDict:(NSDictionary *)dict
 //{
 //    XBUserModel *model = [[self alloc]init];

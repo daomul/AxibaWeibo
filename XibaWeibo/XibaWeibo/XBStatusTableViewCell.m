@@ -19,6 +19,18 @@
     @property (nonatomic, weak) UIView *originalView;
     /** 头像 */
     @property (nonatomic, weak) UIImageView *headIconView;
+    /** 会员图标 */
+    @property (nonatomic, weak) UIImageView *vipView;
+    /** 配图 */
+    @property (nonatomic, weak) UIImageView *photoView;
+    /** 昵称 */
+    @property (nonatomic, weak) UILabel *nameLabel;
+    /** 时间 */
+    @property (nonatomic, weak) UILabel *timeLabel;
+    /** 来源 */
+    @property (nonatomic, weak) UILabel *sourceLabel;
+    /** 正文 */
+    @property (nonatomic, weak) UILabel *contentLabel;
 
 @end
 
@@ -55,6 +67,40 @@
         UIImageView *headIconView = [[UIImageView alloc]init];
         [self.originalView addSubview:headIconView];
         self.headIconView = headIconView;
+        
+        /** 会员图标*/
+        UIImageView *vipView = [[UIImageView alloc]init];
+        [self.originalView addSubview:vipView];
+        self.vipView = vipView;
+        
+        /** 配图 */
+        UIImageView *photosView = [[UIImageView alloc]init];
+        [self.originalView addSubview:photosView];
+        self.photoView = photosView;
+        
+        /** 昵称 */
+        UILabel *nameLabel = [[UILabel alloc]init];
+        [self.originalView addSubview:nameLabel];
+        self.nameLabel =  nameLabel;
+        
+        /** 时间 */
+        UILabel *timeLabel = [[UILabel alloc]init];
+        [self.originalView addSubview:timeLabel];
+        self.timeLabel = timeLabel;
+        
+        /** 来源 */
+        UILabel *sourceLabel = [[UILabel alloc] init];
+        sourceLabel.font = XBStatusCellSourceFont;
+        [originalView addSubview:sourceLabel];
+        self.sourceLabel = sourceLabel;
+        
+        /** 正文 */
+        UILabel *contentLabel = [[UILabel alloc] init];
+        contentLabel.font = XBStatusCellContentFont;
+        contentLabel.numberOfLines = 0;
+        [originalView addSubview:contentLabel];
+        self.contentLabel = contentLabel;
+        
     }
     return self;
 }
@@ -75,6 +121,41 @@
     /** 会员图标 */
     self.headIconView.frame = statusFrame.headIconViewF;
     [self.headIconView sd_setImageWithURL:[NSURL URLWithString:userM.profile_image_url] placeholderImage:[UIImage imageNamed:@"avatar_default_small"]];
+    
+    /** 昵称 */
+    self.nameLabel.text = userM.name;
+    self.nameLabel.frame = statusFrame.nameLabelF;
+    
+    /** 会员图标 */
+    if (userM.isVip) {
+        self.vipView.hidden = NO;
+        
+        self.vipView.frame = statusFrame.vipViewF;
+        NSString *vipName = [NSString stringWithFormat:@"common_icon_membership_level%d", userM.mbrank];
+        self.vipView.image = [UIImage imageNamed:vipName];
+        
+        self.nameLabel.textColor = [UIColor orangeColor];
+    } else {
+        self.nameLabel.textColor = [UIColor blackColor];
+        self.vipView.hidden = YES;
+    }
+    
+    /** 配图 */
+    //self.photoView.frame = statusFrame.photoViewF;
+    //self.photoView.backgroundColor = [UIColor redColor];
+ 
+    
+    /** 时间 */
+    self.timeLabel.text = statusM.created_at;
+    self.timeLabel.frame = statusFrame.timeLabelF;
+    
+    /** 来源 */
+    self.sourceLabel.text = statusM.source;
+    self.sourceLabel.frame = statusFrame.sourceLabelF;
+    
+    /** 正文 */
+    self.contentLabel.text = statusM.text;
+    self.contentLabel.frame = statusFrame.contentLabelF;
 }
 
 

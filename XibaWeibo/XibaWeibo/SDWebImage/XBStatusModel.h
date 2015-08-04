@@ -26,6 +26,9 @@
 /**	string	微博来源*/
 @property (nonatomic, copy) NSString *source;
 
+/** 微博配图地址。多图时返回多图链接。无配图返回“[]” */
+@property (nonatomic, strong) NSArray *pic_urls;
+
 /** 实例方法 初始化模型 只执行一次*/
 //+(instancetype)initStatusWithDict:(NSDictionary *)dict;
 

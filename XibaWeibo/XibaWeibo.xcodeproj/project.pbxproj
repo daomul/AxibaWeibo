@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		680F12631B70FC590074B6AC /* XBPhotoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 680F12621B70FC590074B6AC /* XBPhotoModel.m */; };
 		683B98F71B6B92C1002001E7 /* XBTitleButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 683B98F61B6B92C1002001E7 /* XBTitleButton.m */; };
 		683B991A1B6B943A002001E7 /* MKAnnotationView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 683B98FA1B6B943A002001E7 /* MKAnnotationView+WebCache.m */; };
 		683B991B1B6B943A002001E7 /* NSData+ImageContentType.m in Sources */ = {isa = PBXBuildFile; fileRef = 683B98FC1B6B943A002001E7 /* NSData+ImageContentType.m */; };
@@ -90,6 +91,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		680F12611B70FC590074B6AC /* XBPhotoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBPhotoModel.h; sourceTree = "<group>"; };
+		680F12621B70FC590074B6AC /* XBPhotoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBPhotoModel.m; sourceTree = "<group>"; };
 		683B98F51B6B92C1002001E7 /* XBTitleButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBTitleButton.h; sourceTree = "<group>"; };
 		683B98F61B6B92C1002001E7 /* XBTitleButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBTitleButton.m; sourceTree = "<group>"; };
 		683B98F91B6B943A002001E7 /* MKAnnotationView+WebCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKAnnotationView+WebCache.h"; sourceTree = "<group>"; };
@@ -300,6 +303,8 @@
 				683B99301B6B975A002001E7 /* XBStatusModel.m */,
 				68616EAE1B6E214900FC5097 /* XBStatusFrameModel.h */,
 				68616EAF1B6E214900FC5097 /* XBStatusFrameModel.m */,
+				680F12611B70FC590074B6AC /* XBPhotoModel.h */,
+				680F12621B70FC590074B6AC /* XBPhotoModel.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -771,6 +776,7 @@
 				683B994D1B6BB2DB002001E7 /* MJIvar.m in Sources */,
 				68616EB01B6E214900FC5097 /* XBStatusFrameModel.m in Sources */,
 				683B994F1B6BB2DB002001E7 /* MJMethod.m in Sources */,
+				680F12631B70FC590074B6AC /* XBPhotoModel.m in Sources */,
 				683B99231B6B943A002001E7 /* UIButton+WebCache.m in Sources */,
 				882002291B286E960044E953 /* MessagereviewViewController.m in Sources */,
 				6869A4E51B637DCA00825798 /* AFHTTPRequestOperationManager.m in Sources */,

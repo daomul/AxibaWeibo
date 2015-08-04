@@ -88,12 +88,28 @@
     CGSize contentSize = [self sizeWithText:status.text font:XBStatusCellContentFont maxW:maxW];
     self.contentLabelF = (CGRect){{contentX, contentY}, contentSize};
     
+    /**配图*/
+    CGFloat originalH = 0;
+    if (status.pic_urls.count)
+    {
+        CGFloat photoX = contentX;
+        CGFloat photoY = CGRectGetMaxY(self.contentLabelF) + XBStatusCellBorderW;
+        CGSize photoSize = {100,100};
+        self.photoViewF = (CGRect){{photoX,photoY},photoSize};
+        
+        originalH = CGRectGetMaxY(self.photoViewF) + XBStatusCellBorderW;
+    }
+    else
+    {
+        originalH = CGRectGetMaxY(self.contentLabelF) + XBStatusCellBorderW;
+    }
+    
     
     /** 原创微博整体 */
     CGFloat originalX = 0;
     CGFloat originalY = 0;
     CGFloat originalW = cellW;
-    CGFloat originalH = CGRectGetMaxY(self.contentLabelF) + XBStatusCellBorderW;
+    
     self.originalViewF = CGRectMake(originalX, originalY, originalW, originalH);
     
     

@@ -11,6 +11,7 @@
 #import "XBStatusFrameModel.h"
 #import "XBUserModel.h"
 #import "UIImageView+WebCache.h"
+#import "XBPhotoModel.h"
 
 @interface XBStatusTableViewCell()
 
@@ -141,9 +142,16 @@
     }
     
     /** 配图 */
-    //self.photoView.frame = statusFrame.photoViewF;
-    //self.photoView.backgroundColor = [UIColor redColor];
- 
+    if (statusM.pic_urls.count) {
+        self.photoView.frame = statusFrame.photoViewF;
+        XBPhotoModel *photoM = [statusM.pic_urls firstObject];
+        [self.photoView sd_setImageWithURL:[NSURL URLWithString:photoM.thumbnail_pic] placeholderImage:[UIImage imageNamed:@"timeline_image_placeholder"]];
+        self.photoView.hidden = NO;
+    }
+    else
+    {
+        self.photoView.hidden = YES;
+    }
     
     /** 时间 */
     self.timeLabel.text = statusM.created_at;

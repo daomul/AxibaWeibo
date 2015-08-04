@@ -7,9 +7,19 @@
 //
 
 #import "XBStatusModel.h"
+#import "MJExtension.h"
+#import "XBPhotoModel.h"
 //#import "XBUserModel.h"
 
 @implementation XBStatusModel
+
+/**
+ *  通过设置数组字段和模型的对应关系，MJExtension才知道这个数组存放的是什么玩意
+ */
+-(NSDictionary *)objectClassInArray
+{
+    return @{@"pic_urls" : [XBPhotoModel class]};
+}
 
 //+(instancetype)initStatusWithDict:(NSDictionary *)dict
 //{

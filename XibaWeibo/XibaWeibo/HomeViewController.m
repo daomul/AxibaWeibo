@@ -18,23 +18,25 @@
 #import "MBProgressHUD+MJ.h"
 #import "MJExtension.h"
 #import "XBLoadMoreFooter.h"
+#import "XBStatusFrameModel.h"
+#import "XBStatusTableViewCell.h"
 
 @interface HomeViewController () <XBDropdownMenuDelegate>
 
 //微博数据存储数据
-@property(nonatomic,strong) NSMutableArray *statusArr;
+@property(nonatomic,strong) NSMutableArray *statusFrameArr;
 
 @end
 
 @implementation HomeViewController
 
 #pragma  mark -- 懒加载
--(NSMutableArray *)statusArr
+-(NSMutableArray *)statusFrameArr
 {
-    if (!_statusArr) {
-        self.statusArr = [NSMutableArray array];
+    if (!_statusFrameArr) {
+        self.statusFrameArr = [NSMutableArray array];
     }
-    return _statusArr;
+    return _statusFrameArr;
 }
 
 - (instancetype)initWithStyle:(UITableViewStyle)style
@@ -62,7 +64,7 @@
     [self refreshUpStateDateList];
     
     //定时获得未读数据
-    NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(getUnreadCount) userInfo:nil repeats:YES];
+    NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:60 target:self selector:@selector(getUnreadCount) userInfo:nil repeats:YES];
     // !!主线程也会抽时间处理一下timer（不管主线程是否正在执行其他事件操作）——不加的
     [[NSRunLoop mainRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
 }
@@ -108,10 +110,10 @@
     params[@"access_token"] = account.access_token;
     
     // 取出最前面的微博（最新的微博，ID最大的微博）
-    XBStatusModel *first = [self.statusArr firstObject];
-    if (first) {
+    XBStatusFrameModel *firstFrame = [self.statusFrameArr firstObject];
+    if (firstFrame) {
         // 若指定此参数，则返回ID比since_id大的微博（即比since_id时间晚的微博），默认为0
-        params[@"since_id"] = first.idstr;
+        params[@"since_id"] = firstFrame.status.idstr;
     }
     
     // 3.发送请求
@@ -121,10 +123,13 @@
         //3.1 直接利用MJExtesion.h来构建模型省却一大堆工作量
         NSArray *newStatusArr = [XBStatusModel objectArrayWithKeyValuesArray:responseObject[@"statuses"]];
         
+        // 3.2 微博数据转坏为微博frame
+        NSArray *newStatusFrameArr = [self transFormstatusFrameWithStatues:newStatusArr];
+        
         // 3.2 将最新的微博数据，添加到总数组的最前面
         NSRange range = NSMakeRange(0, newStatusArr.count);
         NSIndexSet *set = [NSIndexSet indexSetWithIndexesInRange:range];
-        [self.statusArr insertObjects:newStatusArr atIndexes:set];
+        [self.statusFrameArr insertObjects:newStatusFrameArr atIndexes:set];
         
         //3.3 c刷新tableView的数据
         [self.tableView reloadData];
@@ -158,11 +163,11 @@
     params[@"access_token"] = account.access_token;
     
     // 取出最前面的微博（最新的微博，ID最大的微博）
-    XBStatusModel *last = [self.statusArr lastObject];
+    XBStatusFrameModel *last = [self.statusFrameArr lastObject];
     if (last) {
         // 若指定此参数，则返回ID小于或等于max_id的微博，默认为0。
         // id这种数据一般都是比较大的，一般转成整数的话，最好是long long类型
-        long long maxId = last.idstr.longLongValue - 1;
+        long long maxId = last.status.idstr.longLongValue - 1;
         params[@"max_id"] = @(maxId);
     }
     
@@ -173,8 +178,11 @@
         //3.1 直接利用MJExtesion.h来构建模型省却一大堆工作量
         NSArray *newStatusArr = [XBStatusModel objectArrayWithKeyValuesArray:responseObject[@"statuses"]];
         
+        // 3.2 微博数据转坏为微博frame
+        NSArray *newStatusFrameArr = [self transFormstatusFrameWithStatues:newStatusArr];
+        
         // 3.2 将最新的微博数据，添加到总数组的最前面
-        [self.statusArr addObjectsFromArray:newStatusArr];
+        [self.statusFrameArr addObjectsFromArray:newStatusFrameArr];
         
         //3.3 c刷新tableView的数据
         [self.tableView reloadData];
@@ -229,6 +237,20 @@
 
 
 #pragma mark -- 自定义方法(设置以及获取信息等)
+
+/**
+ *  将微博数据模型转化为Frame模型
+ */
+-(NSArray *)transFormstatusFrameWithStatues:(NSArray *)statues
+{
+    NSMutableArray *frames = [NSMutableArray array];
+    for (XBStatusModel *status in statues) {
+        XBStatusFrameModel *frame = [[XBStatusFrameModel alloc]init];
+        frame.status = status;
+        [frames addObject:frame];
+    }
+    return frames;
+}
 
 /**
  *  显示刷新了多少条新数据
@@ -384,31 +406,42 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
      // Return the number of rows in the section.
-    return self.statusArr.count;
+    return self.statusFrameArr.count;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    //1.构造cell
-    static NSString *cellID = @"cellID";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
-    if (!cell) {
-        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellID];
-    }
-    
-    //2.取出模型数据
-    XBStatusModel *statusM = self.statusArr[indexPath.row];
-    XBUserModel *userM = statusM.user;
-    
-    //3.设置到cell中
-    cell.textLabel.text = userM.name;
-    cell.detailTextLabel.text = statusM.text;
-    
-    //4. 利用"UIImageView+WebCache.h"加载图片数据
-    UIImage *placeHolderImg = [UIImage imageNamed:@"avatar_default_small"];
-    [cell.imageView sd_setImageWithURL:[NSURL URLWithString:userM.profile_image_url] placeholderImage:placeHolderImg];
+//    //1.构造cell
+//    static NSString *cellID = @"cellID";
+//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
+//    if (!cell) {
+//        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellID];
+//    }
+//    
+//    //2.取出模型数据
+//    XBStatusModel *statusM = self.statusArr[indexPath.row];
+//    XBUserModel *userM = statusM.user;
+//    
+//    //3.设置到cell中
+//    cell.textLabel.text = userM.name;
+//    cell.detailTextLabel.text = statusM.text;
+//    
+//    //4. 利用"UIImageView+WebCache.h"加载图片数据
+//    UIImage *placeHolderImg = [UIImage imageNamed:@"avatar_default_small"];
+//    [cell.imageView sd_setImageWithURL:[NSURL URLWithString:userM.profile_image_url] placeholderImage:placeHolderImg];
+
+    //构造一个新的cell
+    XBStatusTableViewCell *cell = [XBStatusTableViewCell cellWithTableView:tableView];
+
+    //给cell传递frame模型(这样才会调用setstatusFrame 方法)
+    cell.statusFrame = self.statusFrameArr[indexPath.row];
     
     return cell;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 70;
 }
 #pragma mark -- scrollView 的协议方法
 
@@ -420,7 +453,7 @@
     CGFloat offsetY = scrollView.contentOffset.y;
     
     //1. 如果没有数据直接返回
-    if (self.statusArr.count == 0 || self.tableView.tableFooterView.hidden == NO) {
+    if (self.statusFrameArr.count == 0 || self.tableView.tableFooterView.hidden == NO) {
         return;
     }
     

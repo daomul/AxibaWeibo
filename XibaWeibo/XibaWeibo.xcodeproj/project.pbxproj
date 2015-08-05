@@ -39,6 +39,11 @@
 		683B99531B6BB2DB002001E7 /* NSObject+MJKeyValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 683B99471B6BB2DB002001E7 /* NSObject+MJKeyValue.m */; };
 		683B99541B6BB2DB002001E7 /* NSObject+MJMember.m in Sources */ = {isa = PBXBuildFile; fileRef = 683B99491B6BB2DB002001E7 /* NSObject+MJMember.m */; };
 		6846AD7E1B6371B600CC2131 /* XBOAuthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6846AD7D1B6371B600CC2131 /* XBOAuthViewController.m */; };
+		68528D811B7252A5009780DF /* MJRefresh.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 68528D771B7252A5009780DF /* MJRefresh.bundle */; };
+		68528D821B7252A5009780DF /* MJRefreshBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 68528D7A1B7252A5009780DF /* MJRefreshBaseView.m */; };
+		68528D831B7252A5009780DF /* MJRefreshConst.m in Sources */ = {isa = PBXBuildFile; fileRef = 68528D7C1B7252A5009780DF /* MJRefreshConst.m */; };
+		68528D841B7252A5009780DF /* MJRefreshFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 68528D7E1B7252A5009780DF /* MJRefreshFooterView.m */; };
+		68528D851B7252A5009780DF /* MJRefreshHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 68528D801B7252A5009780DF /* MJRefreshHeaderView.m */; };
 		685682191B60A482008EAF0E /* NewfeatureController.m in Sources */ = {isa = PBXBuildFile; fileRef = 685682181B60A482008EAF0E /* NewfeatureController.m */; };
 		685702A61B6760F2004F10C2 /* MBProgressHUD+MJ.m in Sources */ = {isa = PBXBuildFile; fileRef = 685702A21B6760F2004F10C2 /* MBProgressHUD+MJ.m */; };
 		685702A71B6760F2004F10C2 /* MBProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 685702A31B6760F2004F10C2 /* MBProgressHUD.bundle */; };
@@ -157,6 +162,16 @@
 		683B99491B6BB2DB002001E7 /* NSObject+MJMember.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+MJMember.m"; sourceTree = "<group>"; };
 		6846AD7C1B6371B600CC2131 /* XBOAuthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBOAuthViewController.h; sourceTree = "<group>"; };
 		6846AD7D1B6371B600CC2131 /* XBOAuthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBOAuthViewController.m; sourceTree = "<group>"; };
+		68528D771B7252A5009780DF /* MJRefresh.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MJRefresh.bundle; sourceTree = "<group>"; };
+		68528D781B7252A5009780DF /* MJRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefresh.h; sourceTree = "<group>"; };
+		68528D791B7252A5009780DF /* MJRefreshBaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshBaseView.h; sourceTree = "<group>"; };
+		68528D7A1B7252A5009780DF /* MJRefreshBaseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJRefreshBaseView.m; sourceTree = "<group>"; };
+		68528D7B1B7252A5009780DF /* MJRefreshConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshConst.h; sourceTree = "<group>"; };
+		68528D7C1B7252A5009780DF /* MJRefreshConst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJRefreshConst.m; sourceTree = "<group>"; };
+		68528D7D1B7252A5009780DF /* MJRefreshFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshFooterView.h; sourceTree = "<group>"; };
+		68528D7E1B7252A5009780DF /* MJRefreshFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJRefreshFooterView.m; sourceTree = "<group>"; };
+		68528D7F1B7252A5009780DF /* MJRefreshHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshHeaderView.h; sourceTree = "<group>"; };
+		68528D801B7252A5009780DF /* MJRefreshHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJRefreshHeaderView.m; sourceTree = "<group>"; };
 		685682171B60A482008EAF0E /* NewfeatureController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewfeatureController.h; sourceTree = "<group>"; };
 		685682181B60A482008EAF0E /* NewfeatureController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewfeatureController.m; sourceTree = "<group>"; };
 		685702A11B6760F2004F10C2 /* MBProgressHUD+MJ.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+MJ.h"; sourceTree = "<group>"; };
@@ -358,6 +373,23 @@
 				6857029E1B67609E004F10C2 /* Model */,
 			);
 			name = "OAuth(微博授权认证)";
+			sourceTree = "<group>";
+		};
+		68528D761B7252A5009780DF /* MJRefresh */ = {
+			isa = PBXGroup;
+			children = (
+				68528D771B7252A5009780DF /* MJRefresh.bundle */,
+				68528D781B7252A5009780DF /* MJRefresh.h */,
+				68528D791B7252A5009780DF /* MJRefreshBaseView.h */,
+				68528D7A1B7252A5009780DF /* MJRefreshBaseView.m */,
+				68528D7B1B7252A5009780DF /* MJRefreshConst.h */,
+				68528D7C1B7252A5009780DF /* MJRefreshConst.m */,
+				68528D7D1B7252A5009780DF /* MJRefreshFooterView.h */,
+				68528D7E1B7252A5009780DF /* MJRefreshFooterView.m */,
+				68528D7F1B7252A5009780DF /* MJRefreshHeaderView.h */,
+				68528D801B7252A5009780DF /* MJRefreshHeaderView.m */,
+			);
+			path = MJRefresh;
 			sourceTree = "<group>";
 		};
 		685682161B60A436008EAF0E /* Newfeature(新特性) */ = {
@@ -570,6 +602,7 @@
 		88444DD51B2BCF2B009578CC /* lib */ = {
 			isa = PBXGroup;
 			children = (
+				68528D761B7252A5009780DF /* MJRefresh */,
 				683B99321B6BB2DB002001E7 /* MJExtension */,
 				683B98F81B6B943A002001E7 /* SDWebImage */,
 				685702A01B6760F2004F10C2 /* MBProgressHUD */,
@@ -702,6 +735,7 @@
 				8820022A1B286E960044E953 /* MessagereviewViewController.xib in Resources */,
 				68616EA61B6DC30000FC5097 /* XBLoadMoreFooter.xib in Resources */,
 				8802071C1B20858600C31585 /* Images.xcassets in Resources */,
+				68528D811B7252A5009780DF /* MJRefresh.bundle in Resources */,
 				685702A71B6760F2004F10C2 /* MBProgressHUD.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -724,16 +758,19 @@
 				6869A4E41B637DCA00825798 /* AFHTTPRequestOperation.m in Sources */,
 				68CAFD0A1B6A14DE002E2F19 /* UIWindow+Extension.m in Sources */,
 				8800F4161B5D16320037F34D /* XBTabBar.m in Sources */,
+				68528D831B7252A5009780DF /* MJRefreshConst.m in Sources */,
 				68616EA41B6DC2E100FC5097 /* XBLoadMoreFooter.m in Sources */,
 				683B994C1B6BB2DB002001E7 /* MJFoundation.m in Sources */,
 				683B994E1B6BB2DB002001E7 /* MJMember.m in Sources */,
 				683B99211B6B943A002001E7 /* SDWebImageManager.m in Sources */,
+				68528D841B7252A5009780DF /* MJRefreshFooterView.m in Sources */,
 				880367D11B2EEF8800F075C3 /* XBTiTleMeumController.m in Sources */,
 				881974461B2D95B700C6A4DD /* XBDropdownMenuController.m in Sources */,
 				6846AD7E1B6371B600CC2131 /* XBOAuthViewController.m in Sources */,
 				683B99251B6B943A002001E7 /* UIImage+MultiFormat.m in Sources */,
 				88FF943F1B29B5AA00A4B60D /* UIView+Extension.m in Sources */,
 				683B994A1B6BB2DB002001E7 /* MJArgument.m in Sources */,
+				68528D851B7252A5009780DF /* MJRefreshHeaderView.m in Sources */,
 				683B991F1B6B943A002001E7 /* SDWebImageDownloader.m in Sources */,
 				683B992E1B6B962D002001E7 /* XBUserModel.m in Sources */,
 				8820021B1B2867BD0044E953 /* XBTabBarViewController.m in Sources */,
@@ -781,6 +818,7 @@
 				882002291B286E960044E953 /* MessagereviewViewController.m in Sources */,
 				6869A4E51B637DCA00825798 /* AFHTTPRequestOperationManager.m in Sources */,
 				6869A4E81B637DCA00825798 /* AFSecurityPolicy.m in Sources */,
+				68528D821B7252A5009780DF /* MJRefreshBaseView.m in Sources */,
 				683B99291B6B943A002001E7 /* UIView+WebCacheOperation.m in Sources */,
 				683B994B1B6BB2DB002001E7 /* MJConst.m in Sources */,
 				683B991A1B6B943A002001E7 /* MKAnnotationView+WebCache.m in Sources */,

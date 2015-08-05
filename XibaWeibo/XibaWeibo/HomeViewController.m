@@ -9,22 +9,27 @@
 #import "HomeViewController.h"
 #import "XBDropdownMenuController.h"
 #import "XBTiTleMeumController.h"
-#import "AFNetworking.h"
 #import "XBAccountTool.h"
 #import "XBTitleButton.h"
 #import "XBStatusModel.h"
 #import "XBUserModel.h"
-#import "UIImageView+WebCache.h"
-#import "MBProgressHUD+MJ.h"
-#import "MJExtension.h"
 #import "XBLoadMoreFooter.h"
 #import "XBStatusFrameModel.h"
 #import "XBStatusTableViewCell.h"
 
-@interface HomeViewController () <XBDropdownMenuDelegate>
+#import "AFNetworking.h"
+#import "UIImageView+WebCache.h"
+#import "MBProgressHUD+MJ.h"
+#import "MJExtension.h"
+#import "MJRefresh.h"
+
+@interface HomeViewController () <XBDropdownMenuDelegate,MJRefreshBaseViewDelegate>
 
 //微博数据存储数据
 @property(nonatomic,strong) NSMutableArray *statusFrameArr;
+
+@property (nonatomic, weak) MJRefreshHeaderView *header;
+@property (nonatomic, weak) MJRefreshFooterView *footer;
 
 @end
 
@@ -57,11 +62,8 @@
     //获取用户名称，设置到标题处
     [self setTitleUserName];
     
-    //集成下拉刷新控件
-    [self refreshDownStateDateList];
-    
-    //集成上拉刷新控件
-    [self refreshUpStateDateList];
+    //集成上拉下拉刷新控件
+    [self refreshStateDateList];
     
     //定时获得未读数据
     NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:60 target:self selector:@selector(getUnreadCount) userInfo:nil repeats:YES];
@@ -69,37 +71,71 @@
     [[NSRunLoop mainRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
 }
 
+#pragma mark -- MJRefresh 的协议方法
+/**
+ *  刷新控件进入开始刷新状态的时候调用
+ */
+- (void)refreshViewBeginRefreshing:(MJRefreshBaseView *)refreshView
+{
+    if ([refreshView isKindOfClass:[MJRefreshFooterView class]]) { // 上拉刷新
+        
+        [self loadMoreStatusDateList];
+    }
+    else
+    {
+        // 下拉刷新
+        [self refreshStateChange];
+    }
+}
+
 #pragma mark -- 加载微博数据
 
+///**
+// *  集成上拉刷新控件
+// */
+//-(void)refreshUpStateDateList
+//{
+//    XBLoadMoreFooter *footer = [XBLoadMoreFooter footer];
+//    footer.hidden = YES;
+//    self.tableView.tableFooterView = footer;
+//}
+
 /**
- *  集成上拉刷新控件
+ *  集成上下拉刷新控件
  */
--(void)refreshUpStateDateList
+-(void)refreshStateDateList
 {
-    XBLoadMoreFooter *footer = [XBLoadMoreFooter footer];
-    footer.hidden = YES;
-    self.tableView.tableFooterView = footer;
-}
-/**
- *  集成下拉刷新控件
- */
--(void)refreshDownStateDateList
-{
-    //1.加载刷新控件，下拉刷新
-    UIRefreshControl *control = [[UIRefreshControl alloc]init];
-    [control addTarget:self action:@selector(refreshStateChange:) forControlEvents:UIControlEventValueChanged];
-    [self.tableView addSubview:control];
+//    //1.加载刷新控件，下拉刷新
+//    UIRefreshControl *control = [[UIRefreshControl alloc]init];
+//    [control addTarget:self action:@selector(refreshStateChange:) forControlEvents:UIControlEventValueChanged];
+//    [self.tableView addSubview:control];
+//    
+//    //2.一进来就默认加载刷新
+//    [control beginRefreshing];
+//    [self refreshStateChange:control];
     
-    //2.一进来就默认加载刷新
-    [control beginRefreshing];
-    [self refreshStateChange:control];
+    // 1.下拉刷新
+    MJRefreshHeaderView *header = [MJRefreshHeaderView header];
+    header.scrollView = self.tableView;
+    header.delegate = self;
     
+    // 自动进入刷新状态
+    [header beginRefreshing];
+    
+    self.header = header;
+    
+    // 2.上拉刷新(上拉加载更多数据)
+    MJRefreshFooterView *footer = [MJRefreshFooterView footer];
+    footer.scrollView = self.tableView;
+    footer.delegate = self;
+    self.footer = footer;
 }
 
 /**
  *  刷新数据
  */
--(void)refreshStateChange:(UIRefreshControl *)control
+//-(void)refreshStateChange:(UIRefreshControl *)control
+-(void)refreshStateChange
 {
     // 1.请求管理者
     AFHTTPRequestOperationManager *mgr = [AFHTTPRequestOperationManager manager];
@@ -135,7 +171,8 @@
         [self.tableView reloadData];
         
         //3.4 刷新后要结束刷新动作
-        [control endRefreshing];
+        //[control endRefreshing];
+        [self.header endRefreshing];
         
         //3.5 显示最新微博数量
         [self showNewStatusCount:newStatusArr.count];
@@ -144,7 +181,8 @@
         XBLog(@"请求数据失败");
         
         //结束刷新
-        [control endRefreshing];
+        //[control endRefreshing];
+        [self.header endRefreshing];
     }];
     
 }
@@ -188,13 +226,15 @@
         [self.tableView reloadData];
         
         //3.4  结束刷新footer
-        self.tableView.tableFooterView.hidden = YES;
+        //self.tableView.tableFooterView.hidden = YES;
+        [self.footer endRefreshing];
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         XBLog(@"网络请求失败,请稍后再试");
         
         //结束刷新
-        self.tableView.tableFooterView.hidden = YES;
+        //self.tableView.tableFooterView.hidden = YES;
+        [self.footer endRefreshing];
     }];
 
 }
@@ -446,34 +486,42 @@
 }
 #pragma mark -- scrollView 的协议方法
 
-/**
- * 上拉刷新时调用的协议方法
- */
--(void)scrollViewDidScroll:(UIScrollView *)scrollView
+///**
+// * 上拉刷新时调用的协议方法
+// */
+//-(void)scrollViewDidScroll:(UIScrollView *)scrollView
+//{
+//    CGFloat offsetY = scrollView.contentOffset.y;
+//    
+//    //1. 如果没有数据直接返回
+//    if (self.statusFrameArr.count == 0 || self.tableView.tableFooterView.hidden == NO) {
+//        return;
+//    }
+//    
+//    //2. 当最后一个cell完全显示在眼前时，contentOffset的y值
+//    CGFloat lastOffsetY = scrollView.contentSize.height + scrollView.contentInset.bottom - scrollView.height - self.tableView.tableFooterView.height;
+//    if (offsetY >= lastOffsetY) {
+//        self.tableView.tableFooterView.hidden = NO;
+//        
+//        // 加载更多的微博数据
+//        [self loadMoreStatusDateList];
+//    }
+//    
+//    /*
+//     contentInset：除具体内容以外的边框尺寸
+//     contentSize: 里面的具体内容（header、cell、footer），除掉contentInset以外的尺寸
+//     contentOffset:
+//     1.它可以用来判断scrollView滚动到什么位置
+//     2.指scrollView的内容超出了scrollView顶部的距离（除掉contentInset以外的尺寸）
+//     */
+//}
+
+#pragma mark -- dealloc ()
+- (void)dealloc
 {
-    CGFloat offsetY = scrollView.contentOffset.y;
-    
-    //1. 如果没有数据直接返回
-    if (self.statusFrameArr.count == 0 || self.tableView.tableFooterView.hidden == NO) {
-        return;
-    }
-    
-    //2. 当最后一个cell完全显示在眼前时，contentOffset的y值
-    CGFloat lastOffsetY = scrollView.contentSize.height + scrollView.contentInset.bottom - scrollView.height - self.tableView.tableFooterView.height;
-    if (offsetY >= lastOffsetY) {
-        self.tableView.tableFooterView.hidden = NO;
-        
-        // 加载更多的微博数据
-        [self loadMoreStatusDateList];
-    }
-    
-    /*
-     contentInset：除具体内容以外的边框尺寸
-     contentSize: 里面的具体内容（header、cell、footer），除掉contentInset以外的尺寸
-     contentOffset:
-     1.它可以用来判断scrollView滚动到什么位置
-     2.指scrollView的内容超出了scrollView顶部的距离（除掉contentInset以外的尺寸）
-     */
+    // 上拉刷新和下拉刷新结束后要释放内存
+    [self.header free];
+    [self.footer free];
 }
 
 @end

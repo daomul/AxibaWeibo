@@ -33,6 +33,15 @@
     /** 正文 */
     @property (nonatomic, weak) UILabel *contentLabel;
 
+
+    /* 转发微博 */
+    /** 转发微博整体 */
+    @property (nonatomic, weak) UIView *retweetView;
+    /** 转发微博正文 + 昵称 */
+    @property (nonatomic, weak) UILabel *retweetContentLabel;
+    /** 转发配图 */
+    @property (nonatomic, weak) UIImageView *retweetPhotoView;
+
 @end
 
 @implementation XBStatusTableViewCell
@@ -59,53 +68,96 @@
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        /** 原创微博整体 */
-        UIView *originalView = [[UIView alloc]init];
-        [self.contentView addSubview:originalView];
-        self.originalView = originalView;
         
-        /** 头像 */
-        UIImageView *headIconView = [[UIImageView alloc]init];
-        [self.originalView addSubview:headIconView];
-        self.headIconView = headIconView;
-        
-        /** 会员图标*/
-        UIImageView *vipView = [[UIImageView alloc]init];
-        [self.originalView addSubview:vipView];
-        self.vipView = vipView;
-        
-        /** 配图 */
-        UIImageView *photosView = [[UIImageView alloc]init];
-        [self.originalView addSubview:photosView];
-        self.photoView = photosView;
-        
-        /** 昵称 */
-        UILabel *nameLabel = [[UILabel alloc]init];
-        [self.originalView addSubview:nameLabel];
-        self.nameLabel =  nameLabel;
-        
-        /** 时间 */
-        UILabel *timeLabel = [[UILabel alloc]init];
-        [self.originalView addSubview:timeLabel];
-        self.timeLabel = timeLabel;
-        
-        /** 来源 */
-        UILabel *sourceLabel = [[UILabel alloc] init];
-        sourceLabel.font = XBStatusCellSourceFont;
-        [originalView addSubview:sourceLabel];
-        self.sourceLabel = sourceLabel;
-        
-        /** 正文 */
-        UILabel *contentLabel = [[UILabel alloc] init];
-        contentLabel.font = XBStatusCellContentFont;
-        contentLabel.numberOfLines = 0;
-        [originalView addSubview:contentLabel];
-        self.contentLabel = contentLabel;
-        
+        //初始化原创微博
+        [self setOriginalStatus];
+        //初始化转发微博
+        [self setRetweetStatus];
     }
     return self;
 }
 
+#pragma  mark -- private method
+
+/**
+ * 初始化原创微博
+ */
+-(void)setOriginalStatus
+{
+    /** 原创微博整体 */
+    UIView *originalView = [[UIView alloc]init];
+    [self.contentView addSubview:originalView];
+    self.originalView = originalView;
+    
+    /** 头像 */
+    UIImageView *headIconView = [[UIImageView alloc]init];
+    [self.originalView addSubview:headIconView];
+    self.headIconView = headIconView;
+    
+    /** 会员图标*/
+    UIImageView *vipView = [[UIImageView alloc]init];
+    vipView.contentMode = UIViewContentModeCenter;
+    [self.originalView addSubview:vipView];
+    self.vipView = vipView;
+    
+    /** 配图 */
+    UIImageView *photosView = [[UIImageView alloc]init];
+    [self.originalView addSubview:photosView];
+    self.photoView = photosView;
+    
+    /** 昵称 */
+    UILabel *nameLabel = [[UILabel alloc]init];
+    nameLabel.font = XBStatusCellNameFont;
+    [self.originalView addSubview:nameLabel];
+    self.nameLabel =  nameLabel;
+    
+    /** 时间 */
+    UILabel *timeLabel = [[UILabel alloc]init];
+    timeLabel.font = XBStatusCellTimeFont;
+    [self.originalView addSubview:timeLabel];
+    self.timeLabel = timeLabel;
+    
+    /** 来源 */
+    UILabel *sourceLabel = [[UILabel alloc] init];
+    sourceLabel.font = XBStatusCellSourceFont;
+    [originalView addSubview:sourceLabel];
+    self.sourceLabel = sourceLabel;
+    
+    /** 正文 */
+    UILabel *contentLabel = [[UILabel alloc] init];
+    contentLabel.font = XBStatusCellContentFont;
+    contentLabel.numberOfLines = 0;
+    [originalView addSubview:contentLabel];
+    self.contentLabel = contentLabel;
+}
+
+
+/**
+ * 初始化转发微博
+ */
+-(void)setRetweetStatus
+{
+    /** 转发微博整体 */
+    UIView *retweetView = [[UIView alloc]init];
+    retweetView.backgroundColor = XBColor(241, 241, 241);
+    [self.contentView addSubview:retweetView];
+    self.retweetView = retweetView;
+    
+    /** 转发微博正文 + 昵称 */
+    UILabel *retweetContentLabel = [[UILabel alloc]init];
+    retweetContentLabel.numberOfLines = 0;
+    retweetContentLabel.font = XBStatusCellRetweetContentFont;
+    [self.retweetView addSubview:retweetContentLabel];
+    self.retweetContentLabel = retweetContentLabel;
+    
+    /** 转发微博配图 */
+    UIImageView *retweetPhotoImageView = [[UIImageView alloc]init];
+    [self.retweetView addSubview:retweetPhotoImageView];
+    self.retweetPhotoView = retweetPhotoImageView;
+}
+
+
+#pragma  mark -- getter and setter
 /**
  * 设置各个子控件的frame 以及对应的一些数据属性: XBStatusFrameModel *statusFrame;这个属性set方法1
  */
@@ -164,6 +216,51 @@
     /** 正文 */
     self.contentLabel.text = statusM.text;
     self.contentLabel.frame = statusFrame.contentLabelF;
+    
+    /** 被转发的微博 */
+    if (statusM.retweeted_status)
+    {
+        XBStatusModel *retweetStatus = statusM.retweeted_status;
+        XBUserModel *retweetUser = retweetStatus.user;
+        /** 被转发的微博整体 */
+        self.retweetView.frame = statusFrame.retweetViewF;
+        
+        /** 被转发的微博正文 */
+        NSString *retweetContent = [NSString stringWithFormat:@"%@ : %@",retweetUser.name,retweetStatus.text];
+        self.retweetContentLabel.frame = statusFrame.retweetContentLabelF;
+        self.retweetContentLabel.text = retweetStatus.text;
+        
+        /** 被转发的微博配图 */
+        if (retweetStatus.pic_urls.count)
+        {
+            self.retweetPhotoView.frame = statusFrame.retweetPhotoViewF;
+            XBPhotoModel *retweetPhoto = [retweetStatus.pic_urls firstObject];
+            [self.retweetPhotoView sd_setImageWithURL:[NSURL URLWithString:retweetPhoto.thumbnail_pic] placeholderImage:[UIImage imageNamed:@"timeline_image_placeholder"]];
+            self.retweetPhotoView.hidden = NO;
+        }
+        else
+        {
+            self.retweetPhotoView.hidden = YES;
+        }
+        self.retweetView.hidden = NO;
+    }
+    else
+    {
+        self.retweetView.hidden = YES;
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 }
 
 

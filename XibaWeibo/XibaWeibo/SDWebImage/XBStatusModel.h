@@ -29,6 +29,9 @@
 /** 微博配图地址。多图时返回多图链接。无配图返回“[]” */
 @property (nonatomic, strong) NSArray *pic_urls;
 
+/** 被转发的原微博信息字段，当该微博为转发微博时返回 */
+@property (nonatomic, strong) XBStatusModel *retweeted_status;
+
 /** 实例方法 初始化模型 只执行一次*/
 //+(instancetype)initStatusWithDict:(NSDictionary *)dict;
 

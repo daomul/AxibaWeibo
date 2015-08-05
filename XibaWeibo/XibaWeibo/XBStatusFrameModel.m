@@ -112,7 +112,45 @@
     
     self.originalViewF = CGRectMake(originalX, originalY, originalW, originalH);
     
-    
-    self.cellHeight = CGRectGetMaxY(self.originalViewF);
+    /* 被转发微博 */
+    if (status.retweeted_status)
+    {
+        XBStatusModel *retweeted_status = status.retweeted_status;
+        XBUserModel *retweeted_status_user = retweeted_status.user;
+        
+        /** 1. 被转发微博正文 */
+        CGFloat retweetContentX = XBStatusCellBorderW;
+        CGFloat retweetContentY = XBStatusCellBorderW;
+        NSString *retweetContent = [NSString stringWithFormat:@"@%@ : %@", retweeted_status_user.name, retweeted_status.text];
+        CGSize retweetContentSize = [self sizeWithText:retweetContent font:XBStatusCellRetweetContentFont maxW:maxW];
+        self.retweetContentLabelF = (CGRect){{retweetContentX, retweetContentY}, retweetContentSize};
+
+        /** 2. 被转发微博配图 */
+        CGFloat retweetH = 0;
+        if (retweeted_status.pic_urls.count)
+        {
+            CGFloat retweetPhotoWH = 100;
+            CGFloat retweetPhotoX = retweetContentX;
+            CGFloat retweetPhotoY =CGRectGetMaxY(self.retweetContentLabelF) + XBStatusCellBorderW;
+            self.retweetPhotoViewF = (CGRect){{retweetPhotoX,retweetPhotoY},{retweetPhotoWH,retweetPhotoWH}};
+            
+            retweetH = CGRectGetMaxY(self.retweetPhotoViewF) + XBStatusCellBorderW;
+        }
+        else
+        {
+            retweetH = CGRectGetMaxY(self.retweetContentLabelF) + XBStatusCellBorderW;
+        }
+        /** 3. 被转发微博整体 */
+        CGFloat retweetX = 0;
+        CGFloat retweetY = CGRectGetMaxY(self.originalViewF);
+        CGFloat retweetW = cellW;
+        self.retweetViewF = CGRectMake(retweetX, retweetY, retweetW, retweetH);
+        
+        self.cellHeight = CGRectGetMaxY(self.retweetViewF);
+    }
+    else
+    {
+        self.cellHeight = CGRectGetMaxY(self.originalViewF);
+    }
 }
 @end

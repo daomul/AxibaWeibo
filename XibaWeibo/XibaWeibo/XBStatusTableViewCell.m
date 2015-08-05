@@ -107,7 +107,7 @@
 }
 
 /**
- * 设置各个子控件的frame 以及对应的一些数据属性: XBStatusFrameModel *statusFrame;这个属性set方法
+ * 设置各个子控件的frame 以及对应的一些数据属性: XBStatusFrameModel *statusFrame;这个属性set方法1
  */
 -(void)setStatusFrame:(XBStatusFrameModel *)statusFrame
 {

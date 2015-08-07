@@ -12,6 +12,7 @@
 #import "XBUserModel.h"
 #import "UIImageView+WebCache.h"
 #import "XBPhotoModel.h"
+#import "XBStatusToolBar.h"
 
 @interface XBStatusTableViewCell()
 
@@ -42,10 +43,14 @@
     /** 转发配图 */
     @property (nonatomic, weak) UIImageView *retweetPhotoView;
 
+    /** 工具条 */
+    @property (nonatomic, weak) XBStatusToolBar *toolbar;
+
 @end
 
 @implementation XBStatusTableViewCell
 
+#pragma mark -- init
 /**
   初始化构造cell
  */
@@ -73,6 +78,8 @@
         [self setOriginalStatus];
         //初始化转发微博
         [self setRetweetStatus];
+        //初始化工具条
+        [self setupStatusToolBar];
     }
     return self;
 }
@@ -156,6 +163,15 @@
     self.retweetPhotoView = retweetPhotoImageView;
 }
 
+/**
+ * 初始化工具条
+ */
+-(void)setupStatusToolBar
+{
+    XBStatusToolBar *toolBar = [XBStatusToolBar toolBar];
+    [self.contentView addSubview:toolBar];
+    self.toolbar = toolBar;
+}
 
 #pragma  mark -- getter and setter
 /**
@@ -249,18 +265,9 @@
         self.retweetView.hidden = YES;
     }
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    /**工具条*/
+    self.toolbar.frame = statusFrame.toolbarF;
+    self.toolbar.status = statusM;
 }
 
 

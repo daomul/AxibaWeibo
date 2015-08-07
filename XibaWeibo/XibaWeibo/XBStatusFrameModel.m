@@ -112,6 +112,8 @@
     
     self.originalViewF = CGRectMake(originalX, originalY, originalW, originalH);
     
+    CGFloat toolBarY = 0;//因为被转发微博未必存在，要根据判断来计算Y值
+    
     /* 被转发微博 */
     if (status.retweeted_status)
     {
@@ -146,11 +148,20 @@
         CGFloat retweetW = cellW;
         self.retweetViewF = CGRectMake(retweetX, retweetY, retweetW, retweetH);
         
-        self.cellHeight = CGRectGetMaxY(self.retweetViewF);
+        toolBarY = CGRectGetMaxY(self.retweetViewF);
     }
     else
     {
-        self.cellHeight = CGRectGetMaxY(self.originalViewF);
+        toolBarY = CGRectGetMaxY(self.originalViewF);
     }
+    
+     /** 工具条 */
+    CGFloat toolBarX = 0;
+    CGFloat toolBarW = cellW;
+    CGFloat toolBarH = 35;
+    self.toolbarF = CGRectMake(toolBarX, toolBarY, toolBarW, toolBarH);
+    
+    /* cell的高度 */
+    self.cellHeight = CGRectGetMaxY(self.toolbarF);
 }
 @end

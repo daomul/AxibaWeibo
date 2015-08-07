@@ -32,6 +32,13 @@
 /** 被转发的原微博信息字段，当该微博为转发微博时返回 */
 @property (nonatomic, strong) XBStatusModel *retweeted_status;
 
+/**	int	转发数*/
+@property (nonatomic, assign) int reposts_count;
+/**	int	评论数*/
+@property (nonatomic, assign) int comments_count;
+/**	int	表态数*/
+@property (nonatomic, assign) int attitudes_count;
+
 /** 实例方法 初始化模型 只执行一次*/
 //+(instancetype)initStatusWithDict:(NSDictionary *)dict;
 

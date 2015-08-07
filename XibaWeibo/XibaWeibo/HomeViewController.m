@@ -56,6 +56,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.tableView.backgroundColor = XBColor(211, 211, 211);
+    
     //设置导航栏内容
     [self setNavInfo];
     

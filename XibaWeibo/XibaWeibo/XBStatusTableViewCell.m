@@ -73,6 +73,9 @@
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
+        //点击cell的时候不变色
+        self.backgroundColor = [UIColor clearColor];
+        self.selectionStyle = UITableViewCellSelectionStyleNone;
         
         //初始化原创微博
         [self setOriginalStatus];
@@ -94,6 +97,7 @@
     /** 原创微博整体 */
     UIView *originalView = [[UIView alloc]init];
     [self.contentView addSubview:originalView];
+    originalView.backgroundColor = [UIColor whiteColor];
     self.originalView = originalView;
     
     /** 头像 */

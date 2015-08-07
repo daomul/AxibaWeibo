@@ -107,7 +107,7 @@
     
     /** 原创微博整体 */
     CGFloat originalX = 0;
-    CGFloat originalY = 0;
+    CGFloat originalY = XBStatusCellBorderW;
     CGFloat originalW = cellW;
     
     self.originalViewF = CGRectMake(originalX, originalY, originalW, originalH);

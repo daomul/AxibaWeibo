@@ -67,6 +67,7 @@
 		6876DCEB1B6A4AAA006B34F2 /* Foundation+Log.m in Sources */ = {isa = PBXBuildFile; fileRef = 6876DCEA1B6A4AAA006B34F2 /* Foundation+Log.m */; };
 		68CAFD0A1B6A14DE002E2F19 /* UIWindow+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 68CAFD091B6A14DE002E2F19 /* UIWindow+Extension.m */; };
 		68CAFD0D1B6A1924002E2F19 /* XBAccountTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 68CAFD0C1B6A1924002E2F19 /* XBAccountTool.m */; };
+		68DEA8FC1B75C4D000E3DCDC /* NSString+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 68DEA8FB1B75C4D000E3DCDC /* NSString+Extension.m */; };
 		8800F4161B5D16320037F34D /* XBTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 8800F4151B5D16320037F34D /* XBTabBar.m */; };
 		880207111B20858600C31585 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 880207101B20858600C31585 /* main.m */; };
 		880207141B20858600C31585 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 880207131B20858600C31585 /* AppDelegate.m */; };
@@ -218,6 +219,8 @@
 		68CAFD091B6A14DE002E2F19 /* UIWindow+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWindow+Extension.m"; sourceTree = "<group>"; };
 		68CAFD0B1B6A1924002E2F19 /* XBAccountTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBAccountTool.h; sourceTree = "<group>"; };
 		68CAFD0C1B6A1924002E2F19 /* XBAccountTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBAccountTool.m; sourceTree = "<group>"; };
+		68DEA8FA1B75C4D000E3DCDC /* NSString+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Extension.h"; sourceTree = "<group>"; };
+		68DEA8FB1B75C4D000E3DCDC /* NSString+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Extension.m"; sourceTree = "<group>"; };
 		8800F4141B5D16320037F34D /* XBTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBTabBar.h; sourceTree = "<group>"; };
 		8800F4151B5D16320037F34D /* XBTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBTabBar.m; sourceTree = "<group>"; };
 		8802070B1B20858600C31585 /* XibaWeibo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XibaWeibo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -657,6 +660,8 @@
 				68CAFD091B6A14DE002E2F19 /* UIWindow+Extension.m */,
 				6861863A1B74EE37001159D0 /* NSDate+Extension.h */,
 				6861863B1B74EE37001159D0 /* NSDate+Extension.m */,
+				68DEA8FA1B75C4D000E3DCDC /* NSString+Extension.h */,
+				68DEA8FB1B75C4D000E3DCDC /* NSString+Extension.m */,
 			);
 			name = "Category(类别)";
 			sourceTree = "<group>";
@@ -792,6 +797,7 @@
 				683B991F1B6B943A002001E7 /* SDWebImageDownloader.m in Sources */,
 				683B992E1B6B962D002001E7 /* XBUserModel.m in Sources */,
 				8820021B1B2867BD0044E953 /* XBTabBarViewController.m in Sources */,
+				68DEA8FC1B75C4D000E3DCDC /* NSString+Extension.m in Sources */,
 				683B99261B6B943A002001E7 /* UIImage+WebP.m in Sources */,
 				687660DA1B73914500CA2461 /* XBStatusToolBar.m in Sources */,
 				6869A4E61B637DCA00825798 /* AFHTTPSessionManager.m in Sources */,

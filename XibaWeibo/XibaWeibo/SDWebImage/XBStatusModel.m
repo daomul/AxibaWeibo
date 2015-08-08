@@ -24,7 +24,7 @@
 #pragma mark -- getter and setter
 
 /*
- *  在cell中取“来源“字段的值，自然会调用它的get方法
+ *  在cell中取“时间“字段的值，自然会调用它的get方法
  */
 -(NSString *)created_at
 {
@@ -90,6 +90,21 @@
     }
     
     return @"";
+}
+
+/*
+ *  在cell中取“来源“字段的值，自然会调用它的get方法
+ *  为什么用set方法不用get方法，因为cell滑动复用的时候get方法会不断调用，
+ *  来源是固定的，基本不会改变所以set一次就够了，时间会根据日期不断变化，会改变，所以用get方法
+ */
+-(void)setSource:(NSString *)source
+{
+    // source == <a href="http://app.weibo.com/t/feed/2llosp" rel="nofollow">OPPO_N1mini</a>
+    NSRange range;
+    range.location = [source rangeOfString:@">"].location + 1;
+    range.length = [source rangeOfString:@"<" options:NSBackwardsSearch].location - range.location;
+    
+    _source = [NSString stringWithFormat:@"来自 %@",[source substringWithRange:range]];
 }
 
 //+(instancetype)initStatusWithDict:(NSDictionary *)dict

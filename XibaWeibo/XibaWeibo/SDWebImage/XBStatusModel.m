@@ -88,8 +88,6 @@
         format.dateFormat = @"yyyy-mm-dd HH:mm";
         return [format stringFromDate:createDate];
     }
-    
-    return @"";
 }
 
 /*
@@ -101,10 +99,12 @@
 {
     // source == <a href="http://app.weibo.com/t/feed/2llosp" rel="nofollow">OPPO_N1mini</a>
     NSRange range;
-    range.location = [source rangeOfString:@">"].location + 1;
-    range.length = [source rangeOfString:@"<" options:NSBackwardsSearch].location - range.location;
     
-    _source = [NSString stringWithFormat:@"来自 %@",[source substringWithRange:range]];
+    if (![source isEqualToString:@""]) {
+        range.location = [source rangeOfString:@">"].location + 1;
+        range.length = [source rangeOfString:@"<" options:NSBackwardsSearch].location - range.location;
+        _source = [NSString stringWithFormat:@"来自 %@",[source substringWithRange:range]];
+    }
 }
 
 //+(instancetype)initStatusWithDict:(NSDictionary *)dict

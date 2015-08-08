@@ -9,6 +9,7 @@
 #import "XBStatusFrameModel.h"
 #import "XBUserModel.h"
 #import "XBStatusModel.h"
+#import "XBStatusPhotosView.h"
 
 // cell的边框宽度
 #define XBStatusCellBorderW 10
@@ -72,10 +73,10 @@
     {
         CGFloat photoX = contentX;
         CGFloat photoY = CGRectGetMaxY(self.contentLabelF) + XBStatusCellBorderW;
-        CGSize photoSize = {100,100};
-        self.photoViewF = (CGRect){{photoX,photoY},photoSize};
+        CGSize photosSize = [XBStatusPhotosView sizeWithCount:status.pic_urls.count];
+        self.photosViewF = (CGRect){{photoX,photoY},photosSize};
         
-        originalH = CGRectGetMaxY(self.photoViewF) + XBStatusCellBorderW;
+        originalH = CGRectGetMaxY(self.photosViewF) + XBStatusCellBorderW;
     }
     else
     {
@@ -112,9 +113,10 @@
             CGFloat retweetPhotoWH = 100;
             CGFloat retweetPhotoX = retweetContentX;
             CGFloat retweetPhotoY =CGRectGetMaxY(self.retweetContentLabelF) + XBStatusCellBorderW;
-            self.retweetPhotoViewF = (CGRect){{retweetPhotoX,retweetPhotoY},{retweetPhotoWH,retweetPhotoWH}};
+            CGSize retweetPhotosSize = [XBStatusPhotosView sizeWithCount:retweeted_status.pic_urls.count];
+            self.retweetPhotosViewF = (CGRect){{retweetPhotoX,retweetPhotoY},retweetPhotosSize};
             
-            retweetH = CGRectGetMaxY(self.retweetPhotoViewF) + XBStatusCellBorderW;
+            retweetH = CGRectGetMaxY(self.retweetPhotosViewF) + XBStatusCellBorderW;
         }
         else
         {

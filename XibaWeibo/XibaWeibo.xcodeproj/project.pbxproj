@@ -68,6 +68,8 @@
 		68CAFD0A1B6A14DE002E2F19 /* UIWindow+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 68CAFD091B6A14DE002E2F19 /* UIWindow+Extension.m */; };
 		68CAFD0D1B6A1924002E2F19 /* XBAccountTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 68CAFD0C1B6A1924002E2F19 /* XBAccountTool.m */; };
 		68DEA8FC1B75C4D000E3DCDC /* NSString+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 68DEA8FB1B75C4D000E3DCDC /* NSString+Extension.m */; };
+		68DEA8FF1B75E95B00E3DCDC /* XBStatusPhotosView.m in Sources */ = {isa = PBXBuildFile; fileRef = 68DEA8FE1B75E95B00E3DCDC /* XBStatusPhotosView.m */; };
+		68DEA9021B75E98100E3DCDC /* XBStatusPhotoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 68DEA9011B75E98100E3DCDC /* XBStatusPhotoView.m */; };
 		8800F4161B5D16320037F34D /* XBTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 8800F4151B5D16320037F34D /* XBTabBar.m */; };
 		880207111B20858600C31585 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 880207101B20858600C31585 /* main.m */; };
 		880207141B20858600C31585 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 880207131B20858600C31585 /* AppDelegate.m */; };
@@ -221,6 +223,10 @@
 		68CAFD0C1B6A1924002E2F19 /* XBAccountTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBAccountTool.m; sourceTree = "<group>"; };
 		68DEA8FA1B75C4D000E3DCDC /* NSString+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Extension.h"; sourceTree = "<group>"; };
 		68DEA8FB1B75C4D000E3DCDC /* NSString+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Extension.m"; sourceTree = "<group>"; };
+		68DEA8FD1B75E95B00E3DCDC /* XBStatusPhotosView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBStatusPhotosView.h; sourceTree = "<group>"; };
+		68DEA8FE1B75E95B00E3DCDC /* XBStatusPhotosView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBStatusPhotosView.m; sourceTree = "<group>"; };
+		68DEA9001B75E98100E3DCDC /* XBStatusPhotoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBStatusPhotoView.h; sourceTree = "<group>"; };
+		68DEA9011B75E98100E3DCDC /* XBStatusPhotoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBStatusPhotoView.m; sourceTree = "<group>"; };
 		8800F4141B5D16320037F34D /* XBTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBTabBar.h; sourceTree = "<group>"; };
 		8800F4151B5D16320037F34D /* XBTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBTabBar.m; sourceTree = "<group>"; };
 		8802070B1B20858600C31585 /* XibaWeibo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XibaWeibo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -492,6 +498,10 @@
 			children = (
 				687660D81B73914500CA2461 /* XBStatusToolBar.h */,
 				687660D91B73914500CA2461 /* XBStatusToolBar.m */,
+				68DEA8FD1B75E95B00E3DCDC /* XBStatusPhotosView.h */,
+				68DEA8FE1B75E95B00E3DCDC /* XBStatusPhotosView.m */,
+				68DEA9001B75E98100E3DCDC /* XBStatusPhotoView.h */,
+				68DEA9011B75E98100E3DCDC /* XBStatusPhotoView.m */,
 			);
 			name = field;
 			sourceTree = "<group>";
@@ -784,6 +794,7 @@
 				68528D831B7252A5009780DF /* MJRefreshConst.m in Sources */,
 				68616EA41B6DC2E100FC5097 /* XBLoadMoreFooter.m in Sources */,
 				683B994C1B6BB2DB002001E7 /* MJFoundation.m in Sources */,
+				68DEA8FF1B75E95B00E3DCDC /* XBStatusPhotosView.m in Sources */,
 				683B994E1B6BB2DB002001E7 /* MJMember.m in Sources */,
 				683B99211B6B943A002001E7 /* SDWebImageManager.m in Sources */,
 				68528D841B7252A5009780DF /* MJRefreshFooterView.m in Sources */,
@@ -837,6 +848,7 @@
 				882002241B2869270044E953 /* ProfileViewController.m in Sources */,
 				880207111B20858600C31585 /* main.m in Sources */,
 				683B994D1B6BB2DB002001E7 /* MJIvar.m in Sources */,
+				68DEA9021B75E98100E3DCDC /* XBStatusPhotoView.m in Sources */,
 				68616EB01B6E214900FC5097 /* XBStatusFrameModel.m in Sources */,
 				683B994F1B6BB2DB002001E7 /* MJMethod.m in Sources */,
 				680F12631B70FC590074B6AC /* XBPhotoModel.m in Sources */,

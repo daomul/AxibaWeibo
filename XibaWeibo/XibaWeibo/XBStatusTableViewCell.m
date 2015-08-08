@@ -13,6 +13,7 @@
 #import "UIImageView+WebCache.h"
 #import "XBPhotoModel.h"
 #import "XBStatusToolBar.h"
+#import "XBStatusPhotosView.h"
 
 @interface XBStatusTableViewCell()
 
@@ -24,7 +25,7 @@
     /** 会员图标 */
     @property (nonatomic, weak) UIImageView *vipView;
     /** 配图 */
-    @property (nonatomic, weak) UIImageView *photoView;
+    @property (nonatomic, weak) XBStatusPhotosView *photosView;
     /** 昵称 */
     @property (nonatomic, weak) UILabel *nameLabel;
     /** 时间 */
@@ -41,7 +42,7 @@
     /** 转发微博正文 + 昵称 */
     @property (nonatomic, weak) UILabel *retweetContentLabel;
     /** 转发配图 */
-    @property (nonatomic, weak) UIImageView *retweetPhotoView;
+    @property (nonatomic, weak) XBStatusPhotosView *retweetPhotosView;
 
     /** 工具条 */
     @property (nonatomic, weak) XBStatusToolBar *toolbar;
@@ -112,9 +113,9 @@
     self.vipView = vipView;
     
     /** 配图 */
-    UIImageView *photosView = [[UIImageView alloc]init];
+    XBStatusPhotosView *photosView = [[XBStatusPhotosView alloc]init];
     [self.originalView addSubview:photosView];
-    self.photoView = photosView;
+    self.photosView = photosView;
     
     /** 昵称 */
     UILabel *nameLabel = [[UILabel alloc]init];
@@ -163,9 +164,9 @@
     self.retweetContentLabel = retweetContentLabel;
     
     /** 转发微博配图 */
-    UIImageView *retweetPhotoImageView = [[UIImageView alloc]init];
-    [self.retweetView addSubview:retweetPhotoImageView];
-    self.retweetPhotoView = retweetPhotoImageView;
+    XBStatusPhotosView *retweetPhotosImageView = [[XBStatusPhotosView alloc]init];
+    [self.retweetView addSubview:retweetPhotosImageView];
+    self.retweetPhotosView = retweetPhotosImageView;
 }
 
 /**
@@ -216,14 +217,14 @@
     
     /** 配图 */
     if (statusM.pic_urls.count) {
-        self.photoView.frame = statusFrame.photoViewF;
-        XBPhotoModel *photoM = [statusM.pic_urls firstObject];
-        [self.photoView sd_setImageWithURL:[NSURL URLWithString:photoM.thumbnail_pic] placeholderImage:[UIImage imageNamed:@"timeline_image_placeholder"]];
-        self.photoView.hidden = NO;
+        self.photosView.frame = statusFrame.photosViewF;
+        self.photosView.photos = statusM.pic_urls;
+        
+        self.photosView.hidden = NO;
     }
     else
     {
-        self.photoView.hidden = YES;
+        self.photosView.hidden = YES;
     }
     
     /** 时间 */
@@ -249,19 +250,19 @@
         /** 被转发的微博正文 */
         NSString *retweetContent = [NSString stringWithFormat:@"%@ : %@",retweetUser.name,retweetStatus.text];
         self.retweetContentLabel.frame = statusFrame.retweetContentLabelF;
-        self.retweetContentLabel.text = retweetStatus.text;
+        self.retweetContentLabel.text = retweetContent;
         
         /** 被转发的微博配图 */
         if (retweetStatus.pic_urls.count)
         {
-            self.retweetPhotoView.frame = statusFrame.retweetPhotoViewF;
-            XBPhotoModel *retweetPhoto = [retweetStatus.pic_urls firstObject];
-            [self.retweetPhotoView sd_setImageWithURL:[NSURL URLWithString:retweetPhoto.thumbnail_pic] placeholderImage:[UIImage imageNamed:@"timeline_image_placeholder"]];
-            self.retweetPhotoView.hidden = NO;
+            self.retweetPhotosView.frame = statusFrame.retweetPhotosViewF;
+            self.retweetPhotosView.photos = retweetStatus.pic_urls;
+            
+            self.retweetPhotosView.hidden = NO;
         }
         else
         {
-            self.retweetPhotoView.hidden = YES;
+            self.retweetPhotosView.hidden = YES;
         }
         self.retweetView.hidden = NO;
     }

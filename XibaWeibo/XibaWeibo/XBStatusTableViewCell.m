@@ -125,6 +125,7 @@
     /** 时间 */
     UILabel *timeLabel = [[UILabel alloc]init];
     timeLabel.font = XBStatusCellTimeFont;
+    timeLabel.textColor = [UIColor orangeColor];
     [self.originalView addSubview:timeLabel];
     self.timeLabel = timeLabel;
     

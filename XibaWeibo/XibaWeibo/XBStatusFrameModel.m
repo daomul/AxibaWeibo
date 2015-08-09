@@ -11,8 +11,6 @@
 #import "XBStatusModel.h"
 #import "XBStatusPhotosView.h"
 
-// cell的边框宽度
-#define XBStatusCellBorderW 10
 
 @implementation XBStatusFrameModel
 

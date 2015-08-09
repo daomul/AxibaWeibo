@@ -229,12 +229,19 @@
     }
     
     /** 时间 */
+    NSString *timeStr = statusM.created_at;
+    CGFloat timeX = statusFrame.nameLabelF.origin.x;
+    CGFloat timeY = CGRectGetMaxY(statusFrame.nameLabelF) + XBStatusCellBorderW;
+    CGSize timeSize = [timeStr sizeWithFont:XBStatusCellTimeFont];
+    self.timeLabel.frame = (CGRect){{timeX, timeY}, timeSize};
     self.timeLabel.text = statusM.created_at;
-    self.timeLabel.frame = statusFrame.timeLabelF;
     
     /** 来源 */
+    CGFloat sourceX = CGRectGetMaxX(self.timeLabel.frame) + XBStatusCellBorderW;
+    CGFloat sourceY = timeY;
+    CGSize sourceSize = [statusM.source sizeWithFont:XBStatusCellSourceFont];
+    self.sourceLabel.frame = (CGRect){{sourceX, sourceY}, sourceSize};
     self.sourceLabel.text = statusM.source;
-    self.sourceLabel.frame = statusFrame.sourceLabelF;
     
     /** 正文 */
     self.contentLabel.text = statusM.text;

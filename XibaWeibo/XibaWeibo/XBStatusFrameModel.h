@@ -19,6 +19,8 @@
 // 被转发微博的正文字体
 #define XBStatusCellRetweetContentFont [UIFont systemFontOfSize:13]
 
+// cell的边框宽度
+#define XBStatusCellBorderW 10
 
 @class XBStatusModel;
 

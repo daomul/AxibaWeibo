@@ -49,6 +49,7 @@
 		685702A71B6760F2004F10C2 /* MBProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 685702A31B6760F2004F10C2 /* MBProgressHUD.bundle */; };
 		685702A81B6760F2004F10C2 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 685702A51B6760F2004F10C2 /* MBProgressHUD.m */; };
 		685702AC1B67619C004F10C2 /* XBAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = 685702AB1B67619C004F10C2 /* XBAccount.m */; };
+		6860B6CB1B77288500434282 /* XBHeadIconView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6860B6CA1B77288500434282 /* XBHeadIconView.m */; };
 		68616EA41B6DC2E100FC5097 /* XBLoadMoreFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 68616EA31B6DC2E100FC5097 /* XBLoadMoreFooter.m */; };
 		68616EA61B6DC30000FC5097 /* XBLoadMoreFooter.xib in Resources */ = {isa = PBXBuildFile; fileRef = 68616EA51B6DC30000FC5097 /* XBLoadMoreFooter.xib */; };
 		68616EA91B6E0B2D00FC5097 /* XBStatusTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 68616EA81B6E0B2D00FC5097 /* XBStatusTableViewCell.m */; };
@@ -186,6 +187,8 @@
 		685702A51B6760F2004F10C2 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		685702AA1B67619C004F10C2 /* XBAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBAccount.h; sourceTree = "<group>"; };
 		685702AB1B67619C004F10C2 /* XBAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBAccount.m; sourceTree = "<group>"; };
+		6860B6C91B77288500434282 /* XBHeadIconView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBHeadIconView.h; sourceTree = "<group>"; };
+		6860B6CA1B77288500434282 /* XBHeadIconView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBHeadIconView.m; sourceTree = "<group>"; };
 		68616EA21B6DC2E100FC5097 /* XBLoadMoreFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBLoadMoreFooter.h; sourceTree = "<group>"; };
 		68616EA31B6DC2E100FC5097 /* XBLoadMoreFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBLoadMoreFooter.m; sourceTree = "<group>"; };
 		68616EA51B6DC30000FC5097 /* XBLoadMoreFooter.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XBLoadMoreFooter.xib; sourceTree = "<group>"; };
@@ -592,6 +595,8 @@
 				8800F4151B5D16320037F34D /* XBTabBar.m */,
 				683B98F51B6B92C1002001E7 /* XBTitleButton.h */,
 				683B98F61B6B92C1002001E7 /* XBTitleButton.m */,
+				6860B6C91B77288500434282 /* XBHeadIconView.h */,
+				6860B6CA1B77288500434282 /* XBHeadIconView.m */,
 			);
 			name = "field(控件封装)";
 			sourceTree = "<group>";
@@ -806,6 +811,7 @@
 				683B994A1B6BB2DB002001E7 /* MJArgument.m in Sources */,
 				68528D851B7252A5009780DF /* MJRefreshHeaderView.m in Sources */,
 				683B991F1B6B943A002001E7 /* SDWebImageDownloader.m in Sources */,
+				6860B6CB1B77288500434282 /* XBHeadIconView.m in Sources */,
 				683B992E1B6B962D002001E7 /* XBUserModel.m in Sources */,
 				8820021B1B2867BD0044E953 /* XBTabBarViewController.m in Sources */,
 				68DEA8FC1B75C4D000E3DCDC /* NSString+Extension.m in Sources */,

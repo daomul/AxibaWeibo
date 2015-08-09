@@ -14,6 +14,7 @@
 #import "XBPhotoModel.h"
 #import "XBStatusToolBar.h"
 #import "XBStatusPhotosView.h"
+#import "XBHeadIconView.h"
 
 @interface XBStatusTableViewCell()
 
@@ -21,7 +22,7 @@
     /** 原创微博整体 */
     @property (nonatomic, weak) UIView *originalView;
     /** 头像 */
-    @property (nonatomic, weak) UIImageView *headIconView;
+    @property (nonatomic, weak) XBHeadIconView *headIconView;
     /** 会员图标 */
     @property (nonatomic, weak) UIImageView *vipView;
     /** 配图 */
@@ -102,7 +103,7 @@
     self.originalView = originalView;
     
     /** 头像 */
-    UIImageView *headIconView = [[UIImageView alloc]init];
+    XBHeadIconView *headIconView = [[XBHeadIconView alloc]init];
     [self.originalView addSubview:headIconView];
     self.headIconView = headIconView;
     
@@ -195,7 +196,7 @@
     
     /** 会员头像 */
     self.headIconView.frame = statusFrame.headIconViewF;
-    [self.headIconView sd_setImageWithURL:[NSURL URLWithString:userM.profile_image_url] placeholderImage:[UIImage imageNamed:@"avatar_default_small"]];
+    self.headIconView.user = userM;
     
     /** 昵称 */
     self.nameLabel.text = userM.name;

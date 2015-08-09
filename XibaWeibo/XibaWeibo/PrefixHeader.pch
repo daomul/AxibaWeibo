@@ -19,6 +19,9 @@
 #import "NSDate+Extension.h"
 #import "NSString+Extension.h"
 
+// 通知中心
+#define XBNotificationCenter [NSNotificationCenter defaultCenter]
+
 #ifdef DEBUG
 #define XBLog(...) NSLog(__VA_ARGS__)
 #else

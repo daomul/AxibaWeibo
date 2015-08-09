@@ -50,6 +50,8 @@
 		685702A81B6760F2004F10C2 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 685702A51B6760F2004F10C2 /* MBProgressHUD.m */; };
 		685702AC1B67619C004F10C2 /* XBAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = 685702AB1B67619C004F10C2 /* XBAccount.m */; };
 		6860B6CB1B77288500434282 /* XBHeadIconView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6860B6CA1B77288500434282 /* XBHeadIconView.m */; };
+		6860B6CF1B772F3B00434282 /* ComposeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6860B6CE1B772F3B00434282 /* ComposeViewController.m */; };
+		6860B6D21B7748FF00434282 /* XBTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6860B6D11B7748FF00434282 /* XBTextView.m */; };
 		68616EA41B6DC2E100FC5097 /* XBLoadMoreFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 68616EA31B6DC2E100FC5097 /* XBLoadMoreFooter.m */; };
 		68616EA61B6DC30000FC5097 /* XBLoadMoreFooter.xib in Resources */ = {isa = PBXBuildFile; fileRef = 68616EA51B6DC30000FC5097 /* XBLoadMoreFooter.xib */; };
 		68616EA91B6E0B2D00FC5097 /* XBStatusTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 68616EA81B6E0B2D00FC5097 /* XBStatusTableViewCell.m */; };
@@ -189,6 +191,10 @@
 		685702AB1B67619C004F10C2 /* XBAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBAccount.m; sourceTree = "<group>"; };
 		6860B6C91B77288500434282 /* XBHeadIconView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBHeadIconView.h; sourceTree = "<group>"; };
 		6860B6CA1B77288500434282 /* XBHeadIconView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBHeadIconView.m; sourceTree = "<group>"; };
+		6860B6CD1B772F3B00434282 /* ComposeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComposeViewController.h; sourceTree = "<group>"; };
+		6860B6CE1B772F3B00434282 /* ComposeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComposeViewController.m; sourceTree = "<group>"; };
+		6860B6D01B7748FF00434282 /* XBTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBTextView.h; sourceTree = "<group>"; };
+		6860B6D11B7748FF00434282 /* XBTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBTextView.m; sourceTree = "<group>"; };
 		68616EA21B6DC2E100FC5097 /* XBLoadMoreFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBLoadMoreFooter.h; sourceTree = "<group>"; };
 		68616EA31B6DC2E100FC5097 /* XBLoadMoreFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBLoadMoreFooter.m; sourceTree = "<group>"; };
 		68616EA51B6DC30000FC5097 /* XBLoadMoreFooter.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XBLoadMoreFooter.xib; sourceTree = "<group>"; };
@@ -458,6 +464,15 @@
 			name = Tool;
 			sourceTree = "<group>";
 		};
+		6860B6CC1B772EDB00434282 /* Compose(发微博) */ = {
+			isa = PBXGroup;
+			children = (
+				6860B6CD1B772F3B00434282 /* ComposeViewController.h */,
+				6860B6CE1B772F3B00434282 /* ComposeViewController.m */,
+			);
+			name = "Compose(发微博)";
+			sourceTree = "<group>";
+		};
 		68616EA11B6DC2AC00FC5097 /* VIew */ = {
 			isa = PBXGroup;
 			children = (
@@ -571,6 +586,7 @@
 		880207341B20901600C31585 /* class */ = {
 			isa = PBXGroup;
 			children = (
+				6860B6CC1B772EDB00434282 /* Compose(发微博) */,
 				6846AD7B1B63718E00CC2131 /* OAuth(微博授权认证) */,
 				685682161B60A436008EAF0E /* Newfeature(新特性) */,
 				88444DD61B2BCF69009578CC /* main(主面板) */,
@@ -597,6 +613,8 @@
 				683B98F61B6B92C1002001E7 /* XBTitleButton.m */,
 				6860B6C91B77288500434282 /* XBHeadIconView.h */,
 				6860B6CA1B77288500434282 /* XBHeadIconView.m */,
+				6860B6D01B7748FF00434282 /* XBTextView.h */,
+				6860B6D11B7748FF00434282 /* XBTextView.m */,
 			);
 			name = "field(控件封装)";
 			sourceTree = "<group>";
@@ -799,6 +817,7 @@
 				68528D831B7252A5009780DF /* MJRefreshConst.m in Sources */,
 				68616EA41B6DC2E100FC5097 /* XBLoadMoreFooter.m in Sources */,
 				683B994C1B6BB2DB002001E7 /* MJFoundation.m in Sources */,
+				6860B6D21B7748FF00434282 /* XBTextView.m in Sources */,
 				68DEA8FF1B75E95B00E3DCDC /* XBStatusPhotosView.m in Sources */,
 				683B994E1B6BB2DB002001E7 /* MJMember.m in Sources */,
 				683B99211B6B943A002001E7 /* SDWebImageManager.m in Sources */,
@@ -866,6 +885,7 @@
 				683B99291B6B943A002001E7 /* UIView+WebCacheOperation.m in Sources */,
 				683B994B1B6BB2DB002001E7 /* MJConst.m in Sources */,
 				683B991A1B6B943A002001E7 /* MKAnnotationView+WebCache.m in Sources */,
+				6860B6CF1B772F3B00434282 /* ComposeViewController.m in Sources */,
 				880207371B20904100C31585 /* HomeViewController.m in Sources */,
 				685702A81B6760F2004F10C2 /* MBProgressHUD.m in Sources */,
 			);

@@ -52,6 +52,7 @@
 		6860B6CB1B77288500434282 /* XBHeadIconView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6860B6CA1B77288500434282 /* XBHeadIconView.m */; };
 		6860B6CF1B772F3B00434282 /* ComposeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6860B6CE1B772F3B00434282 /* ComposeViewController.m */; };
 		6860B6D21B7748FF00434282 /* XBTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6860B6D11B7748FF00434282 /* XBTextView.m */; };
+		6860B6D71B775CC800434282 /* XBComposeToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 6860B6D61B775CC800434282 /* XBComposeToolBar.m */; };
 		68616EA41B6DC2E100FC5097 /* XBLoadMoreFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 68616EA31B6DC2E100FC5097 /* XBLoadMoreFooter.m */; };
 		68616EA61B6DC30000FC5097 /* XBLoadMoreFooter.xib in Resources */ = {isa = PBXBuildFile; fileRef = 68616EA51B6DC30000FC5097 /* XBLoadMoreFooter.xib */; };
 		68616EA91B6E0B2D00FC5097 /* XBStatusTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 68616EA81B6E0B2D00FC5097 /* XBStatusTableViewCell.m */; };
@@ -195,6 +196,8 @@
 		6860B6CE1B772F3B00434282 /* ComposeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComposeViewController.m; sourceTree = "<group>"; };
 		6860B6D01B7748FF00434282 /* XBTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBTextView.h; sourceTree = "<group>"; };
 		6860B6D11B7748FF00434282 /* XBTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBTextView.m; sourceTree = "<group>"; };
+		6860B6D51B775CC800434282 /* XBComposeToolBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBComposeToolBar.h; sourceTree = "<group>"; };
+		6860B6D61B775CC800434282 /* XBComposeToolBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBComposeToolBar.m; sourceTree = "<group>"; };
 		68616EA21B6DC2E100FC5097 /* XBLoadMoreFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBLoadMoreFooter.h; sourceTree = "<group>"; };
 		68616EA31B6DC2E100FC5097 /* XBLoadMoreFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBLoadMoreFooter.m; sourceTree = "<group>"; };
 		68616EA51B6DC30000FC5097 /* XBLoadMoreFooter.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XBLoadMoreFooter.xib; sourceTree = "<group>"; };
@@ -467,10 +470,28 @@
 		6860B6CC1B772EDB00434282 /* Compose(发微博) */ = {
 			isa = PBXGroup;
 			children = (
+				6860B6D41B775CA800434282 /* view */,
+				6860B6D31B775C9D00434282 /* contorller */,
 				6860B6CD1B772F3B00434282 /* ComposeViewController.h */,
 				6860B6CE1B772F3B00434282 /* ComposeViewController.m */,
 			);
 			name = "Compose(发微博)";
+			sourceTree = "<group>";
+		};
+		6860B6D31B775C9D00434282 /* contorller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = contorller;
+			sourceTree = "<group>";
+		};
+		6860B6D41B775CA800434282 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				6860B6D51B775CC800434282 /* XBComposeToolBar.h */,
+				6860B6D61B775CC800434282 /* XBComposeToolBar.m */,
+			);
+			name = view;
 			sourceTree = "<group>";
 		};
 		68616EA11B6DC2AC00FC5097 /* VIew */ = {
@@ -824,6 +845,7 @@
 				68528D841B7252A5009780DF /* MJRefreshFooterView.m in Sources */,
 				880367D11B2EEF8800F075C3 /* XBTiTleMeumController.m in Sources */,
 				881974461B2D95B700C6A4DD /* XBDropdownMenuController.m in Sources */,
+				6860B6D71B775CC800434282 /* XBComposeToolBar.m in Sources */,
 				6846AD7E1B6371B600CC2131 /* XBOAuthViewController.m in Sources */,
 				683B99251B6B943A002001E7 /* UIImage+MultiFormat.m in Sources */,
 				88FF943F1B29B5AA00A4B60D /* UIView+Extension.m in Sources */,

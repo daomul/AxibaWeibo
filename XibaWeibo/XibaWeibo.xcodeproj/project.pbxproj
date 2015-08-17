@@ -69,6 +69,7 @@
 		6869A4EC1B637DCA00825798 /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6869A4E31B637DCA00825798 /* AFURLSessionManager.m */; };
 		687660DA1B73914500CA2461 /* XBStatusToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 687660D91B73914500CA2461 /* XBStatusToolBar.m */; };
 		6876DCEB1B6A4AAA006B34F2 /* Foundation+Log.m in Sources */ = {isa = PBXBuildFile; fileRef = 6876DCEA1B6A4AAA006B34F2 /* Foundation+Log.m */; };
+		68926DB91B81FC47009D0769 /* XBComposePhotosView.m in Sources */ = {isa = PBXBuildFile; fileRef = 68926DB81B81FC47009D0769 /* XBComposePhotosView.m */; };
 		68CAFD0A1B6A14DE002E2F19 /* UIWindow+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 68CAFD091B6A14DE002E2F19 /* UIWindow+Extension.m */; };
 		68CAFD0D1B6A1924002E2F19 /* XBAccountTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 68CAFD0C1B6A1924002E2F19 /* XBAccountTool.m */; };
 		68DEA8FC1B75C4D000E3DCDC /* NSString+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 68DEA8FB1B75C4D000E3DCDC /* NSString+Extension.m */; };
@@ -229,6 +230,8 @@
 		687660D81B73914500CA2461 /* XBStatusToolBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBStatusToolBar.h; sourceTree = "<group>"; };
 		687660D91B73914500CA2461 /* XBStatusToolBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBStatusToolBar.m; sourceTree = "<group>"; };
 		6876DCEA1B6A4AAA006B34F2 /* Foundation+Log.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Foundation+Log.m"; sourceTree = "<group>"; };
+		68926DB71B81FC47009D0769 /* XBComposePhotosView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBComposePhotosView.h; sourceTree = "<group>"; };
+		68926DB81B81FC47009D0769 /* XBComposePhotosView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBComposePhotosView.m; sourceTree = "<group>"; };
 		68CAFD081B6A14DE002E2F19 /* UIWindow+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWindow+Extension.h"; sourceTree = "<group>"; };
 		68CAFD091B6A14DE002E2F19 /* UIWindow+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWindow+Extension.m"; sourceTree = "<group>"; };
 		68CAFD0B1B6A1924002E2F19 /* XBAccountTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBAccountTool.h; sourceTree = "<group>"; };
@@ -490,6 +493,8 @@
 			children = (
 				6860B6D51B775CC800434282 /* XBComposeToolBar.h */,
 				6860B6D61B775CC800434282 /* XBComposeToolBar.m */,
+				68926DB71B81FC47009D0769 /* XBComposePhotosView.h */,
+				68926DB81B81FC47009D0769 /* XBComposePhotosView.m */,
 			);
 			name = view;
 			sourceTree = "<group>";
@@ -887,6 +892,7 @@
 				683B99201B6B943A002001E7 /* SDWebImageDownloaderOperation.m in Sources */,
 				685702A61B6760F2004F10C2 /* MBProgressHUD+MJ.m in Sources */,
 				683B99531B6BB2DB002001E7 /* NSObject+MJKeyValue.m in Sources */,
+				68926DB91B81FC47009D0769 /* XBComposePhotosView.m in Sources */,
 				88444DDA1B2BDCE8009578CC /* UIBarButtonItem+Extension.m in Sources */,
 				683B991D1B6B943A002001E7 /* SDWebImageCompat.m in Sources */,
 				683B99521B6BB2DB002001E7 /* NSObject+MJCoding.m in Sources */,

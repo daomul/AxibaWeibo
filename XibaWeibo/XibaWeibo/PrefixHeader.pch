@@ -18,6 +18,7 @@
 #import "UIWindow+Extension.h"
 #import "NSDate+Extension.h"
 #import "NSString+Extension.h"
+#import "NSString+Emoji.h"
 
 // 通知中心
 #define XBNotificationCenter [NSNotificationCenter defaultCenter]

@@ -8,8 +8,16 @@
 
 #import "XBComposeToolBar.h"
 
+@interface XBComposeToolBar()
+
+/** 表情的按钮*/
+@property (nonatomic, weak) UIButton *emotionButton;
+
+@end
+
 @implementation XBComposeToolBar
 
+#pragma mark -- life cycle
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
@@ -25,7 +33,7 @@
         
         [self setupBtn:@"compose_trendbutton_background" highImage:@"compose_trendbutton_background_highlighted" type:XBComposeToolbarButtonTypeTrend];
         
-        [self setupBtn:@"compose_emoticonbutton_background" highImage:@"compose_emoticonbutton_background_highlighted" type:XBComposeToolbarButtonTypeEmotion];
+        self.emotionButton = [self setupBtn:@"compose_emoticonbutton_background" highImage:@"compose_emoticonbutton_background_highlighted" type:XBComposeToolbarButtonTypeEmotion];
     }
     return self;
 }
@@ -42,10 +50,31 @@
     }
 }
 
+#pragma mark -- getter and setter
+-(void)setShowKeyboardButton:(BOOL)showKeyboardButton
+{
+    _showKeyboardButton = showKeyboardButton;
+    
+    // 默认的图片名
+    NSString *image = @"compose_emoticonbutton_background";
+    NSString *highImage = @"compose_emoticonbutton_background_highlighted";
+    
+    // 显示键盘图标
+    if (showKeyboardButton) {
+        image = @"compose_keyboardbutton_background";
+        highImage = @"compose_keyboardbutton_background_highlighted";
+    }
+    
+    // 设置图片
+    [self.emotionButton setImage:[UIImage imageNamed:image] forState:UIControlStateNormal];
+    [self.emotionButton setImage:[UIImage imageNamed:highImage] forState:UIControlStateHighlighted];
+}
+
+#pragma mark -- private methods
 /**
  * 创建一个按钮
  */
-- (void)setupBtn:(NSString *)image highImage:(NSString *)highImage type:(XBComposeToolbarButtonType)type
+- (UIButton *)setupBtn:(NSString *)image highImage:(NSString *)highImage type:(XBComposeToolbarButtonType)type
 {
     UIButton *btn = [[UIButton alloc] init];
     [btn setImage:[UIImage imageNamed:image] forState:UIControlStateNormal];
@@ -53,6 +82,8 @@
     [btn addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
     btn.tag = type;
     [self addSubview:btn];
+    
+    return btn;
 }
 
 -(void)btnClick:(UIButton *)btn

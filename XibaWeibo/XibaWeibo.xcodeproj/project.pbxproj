@@ -70,6 +70,11 @@
 		687660DA1B73914500CA2461 /* XBStatusToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 687660D91B73914500CA2461 /* XBStatusToolBar.m */; };
 		6876DCEB1B6A4AAA006B34F2 /* Foundation+Log.m in Sources */ = {isa = PBXBuildFile; fileRef = 6876DCEA1B6A4AAA006B34F2 /* Foundation+Log.m */; };
 		68926DB91B81FC47009D0769 /* XBComposePhotosView.m in Sources */ = {isa = PBXBuildFile; fileRef = 68926DB81B81FC47009D0769 /* XBComposePhotosView.m */; };
+		68926DBE1B82149A009D0769 /* NSString+Emoji.m in Sources */ = {isa = PBXBuildFile; fileRef = 68926DBD1B82149A009D0769 /* NSString+Emoji.m */; };
+		68926DC21B8215FD009D0769 /* XBEmotionKeyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = 68926DC11B8215FD009D0769 /* XBEmotionKeyboard.m */; };
+		68926DC61B821BAF009D0769 /* XBEmotionListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 68926DC51B821BAF009D0769 /* XBEmotionListView.m */; };
+		68926DC91B821BE8009D0769 /* XBEmotionTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 68926DC81B821BE8009D0769 /* XBEmotionTabBar.m */; };
+		68926DCD1B821F64009D0769 /* XBEmotionTabBarButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 68926DCC1B821F64009D0769 /* XBEmotionTabBarButton.m */; };
 		68CAFD0A1B6A14DE002E2F19 /* UIWindow+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 68CAFD091B6A14DE002E2F19 /* UIWindow+Extension.m */; };
 		68CAFD0D1B6A1924002E2F19 /* XBAccountTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 68CAFD0C1B6A1924002E2F19 /* XBAccountTool.m */; };
 		68DEA8FC1B75C4D000E3DCDC /* NSString+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 68DEA8FB1B75C4D000E3DCDC /* NSString+Extension.m */; };
@@ -232,6 +237,16 @@
 		6876DCEA1B6A4AAA006B34F2 /* Foundation+Log.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Foundation+Log.m"; sourceTree = "<group>"; };
 		68926DB71B81FC47009D0769 /* XBComposePhotosView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBComposePhotosView.h; sourceTree = "<group>"; };
 		68926DB81B81FC47009D0769 /* XBComposePhotosView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBComposePhotosView.m; sourceTree = "<group>"; };
+		68926DBC1B82149A009D0769 /* NSString+Emoji.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Emoji.h"; sourceTree = "<group>"; };
+		68926DBD1B82149A009D0769 /* NSString+Emoji.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Emoji.m"; sourceTree = "<group>"; };
+		68926DC01B8215FD009D0769 /* XBEmotionKeyboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBEmotionKeyboard.h; sourceTree = "<group>"; };
+		68926DC11B8215FD009D0769 /* XBEmotionKeyboard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBEmotionKeyboard.m; sourceTree = "<group>"; };
+		68926DC41B821BAF009D0769 /* XBEmotionListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBEmotionListView.h; sourceTree = "<group>"; };
+		68926DC51B821BAF009D0769 /* XBEmotionListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBEmotionListView.m; sourceTree = "<group>"; };
+		68926DC71B821BE8009D0769 /* XBEmotionTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBEmotionTabBar.h; sourceTree = "<group>"; };
+		68926DC81B821BE8009D0769 /* XBEmotionTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBEmotionTabBar.m; sourceTree = "<group>"; };
+		68926DCB1B821F64009D0769 /* XBEmotionTabBarButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBEmotionTabBarButton.h; sourceTree = "<group>"; };
+		68926DCC1B821F64009D0769 /* XBEmotionTabBarButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBEmotionTabBarButton.m; sourceTree = "<group>"; };
 		68CAFD081B6A14DE002E2F19 /* UIWindow+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWindow+Extension.h"; sourceTree = "<group>"; };
 		68CAFD091B6A14DE002E2F19 /* UIWindow+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWindow+Extension.m"; sourceTree = "<group>"; };
 		68CAFD0B1B6A1924002E2F19 /* XBAccountTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBAccountTool.h; sourceTree = "<group>"; };
@@ -491,10 +506,9 @@
 		6860B6D41B775CA800434282 /* view */ = {
 			isa = PBXGroup;
 			children = (
-				6860B6D51B775CC800434282 /* XBComposeToolBar.h */,
-				6860B6D61B775CC800434282 /* XBComposeToolBar.m */,
-				68926DB71B81FC47009D0769 /* XBComposePhotosView.h */,
-				68926DB81B81FC47009D0769 /* XBComposePhotosView.m */,
+				68926DCF1B822123009D0769 /* photosView */,
+				68926DCE1B82210A009D0769 /* toolBar */,
+				68926DBF1B8215DF009D0769 /* keyboard */,
 			);
 			name = view;
 			sourceTree = "<group>";
@@ -548,6 +562,55 @@
 				68DEA9011B75E98100E3DCDC /* XBStatusPhotoView.m */,
 			);
 			name = field;
+			sourceTree = "<group>";
+		};
+		68926DBF1B8215DF009D0769 /* keyboard */ = {
+			isa = PBXGroup;
+			children = (
+				68926DC01B8215FD009D0769 /* XBEmotionKeyboard.h */,
+				68926DC11B8215FD009D0769 /* XBEmotionKeyboard.m */,
+				68926DD01B822140009D0769 /* ListVIew */,
+				68926DCA1B821F35009D0769 /* keyBoardtarBar */,
+			);
+			name = keyboard;
+			sourceTree = "<group>";
+		};
+		68926DCA1B821F35009D0769 /* keyBoardtarBar */ = {
+			isa = PBXGroup;
+			children = (
+				68926DC71B821BE8009D0769 /* XBEmotionTabBar.h */,
+				68926DC81B821BE8009D0769 /* XBEmotionTabBar.m */,
+				68926DCB1B821F64009D0769 /* XBEmotionTabBarButton.h */,
+				68926DCC1B821F64009D0769 /* XBEmotionTabBarButton.m */,
+			);
+			name = keyBoardtarBar;
+			sourceTree = "<group>";
+		};
+		68926DCE1B82210A009D0769 /* toolBar */ = {
+			isa = PBXGroup;
+			children = (
+				6860B6D51B775CC800434282 /* XBComposeToolBar.h */,
+				6860B6D61B775CC800434282 /* XBComposeToolBar.m */,
+			);
+			name = toolBar;
+			sourceTree = "<group>";
+		};
+		68926DCF1B822123009D0769 /* photosView */ = {
+			isa = PBXGroup;
+			children = (
+				68926DB71B81FC47009D0769 /* XBComposePhotosView.h */,
+				68926DB81B81FC47009D0769 /* XBComposePhotosView.m */,
+			);
+			name = photosView;
+			sourceTree = "<group>";
+		};
+		68926DD01B822140009D0769 /* ListVIew */ = {
+			isa = PBXGroup;
+			children = (
+				68926DC41B821BAF009D0769 /* XBEmotionListView.h */,
+				68926DC51B821BAF009D0769 /* XBEmotionListView.m */,
+			);
+			name = ListVIew;
 			sourceTree = "<group>";
 		};
 		880207021B20858600C31585 = {
@@ -710,6 +773,8 @@
 		88FF943C1B29B38A00A4B60D /* Category(类别) */ = {
 			isa = PBXGroup;
 			children = (
+				68926DBC1B82149A009D0769 /* NSString+Emoji.h */,
+				68926DBD1B82149A009D0769 /* NSString+Emoji.m */,
 				6876DCEA1B6A4AAA006B34F2 /* Foundation+Log.m */,
 				88FF943D1B29B5AA00A4B60D /* UIView+Extension.h */,
 				88FF943E1B29B5AA00A4B60D /* UIView+Extension.m */,
@@ -840,6 +905,7 @@
 				6869A4E41B637DCA00825798 /* AFHTTPRequestOperation.m in Sources */,
 				68CAFD0A1B6A14DE002E2F19 /* UIWindow+Extension.m in Sources */,
 				8800F4161B5D16320037F34D /* XBTabBar.m in Sources */,
+				68926DCD1B821F64009D0769 /* XBEmotionTabBarButton.m in Sources */,
 				68528D831B7252A5009780DF /* MJRefreshConst.m in Sources */,
 				68616EA41B6DC2E100FC5097 /* XBLoadMoreFooter.m in Sources */,
 				683B994C1B6BB2DB002001E7 /* MJFoundation.m in Sources */,
@@ -872,6 +938,7 @@
 				683B991E1B6B943A002001E7 /* SDWebImageDecoder.m in Sources */,
 				683B99221B6B943A002001E7 /* SDWebImagePrefetcher.m in Sources */,
 				8820021E1B2868FD0044E953 /* MessageViewController.m in Sources */,
+				68926DBE1B82149A009D0769 /* NSString+Emoji.m in Sources */,
 				6869A4E71B637DCA00825798 /* AFNetworkReachabilityManager.m in Sources */,
 				6869A4EC1B637DCA00825798 /* AFURLSessionManager.m in Sources */,
 				880207141B20858600C31585 /* AppDelegate.m in Sources */,
@@ -899,6 +966,7 @@
 				683B991B1B6B943A002001E7 /* NSData+ImageContentType.m in Sources */,
 				685682191B60A482008EAF0E /* NewfeatureController.m in Sources */,
 				882002241B2869270044E953 /* ProfileViewController.m in Sources */,
+				68926DC61B821BAF009D0769 /* XBEmotionListView.m in Sources */,
 				880207111B20858600C31585 /* main.m in Sources */,
 				683B994D1B6BB2DB002001E7 /* MJIvar.m in Sources */,
 				68DEA9021B75E98100E3DCDC /* XBStatusPhotoView.m in Sources */,
@@ -907,6 +975,8 @@
 				680F12631B70FC590074B6AC /* XBPhotoModel.m in Sources */,
 				683B99231B6B943A002001E7 /* UIButton+WebCache.m in Sources */,
 				882002291B286E960044E953 /* MessagereviewViewController.m in Sources */,
+				68926DC91B821BE8009D0769 /* XBEmotionTabBar.m in Sources */,
+				68926DC21B8215FD009D0769 /* XBEmotionKeyboard.m in Sources */,
 				6869A4E51B637DCA00825798 /* AFHTTPRequestOperationManager.m in Sources */,
 				6869A4E81B637DCA00825798 /* AFSecurityPolicy.m in Sources */,
 				68528D821B7252A5009780DF /* MJRefreshBaseView.m in Sources */,

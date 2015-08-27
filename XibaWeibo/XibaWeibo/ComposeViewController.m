@@ -13,8 +13,10 @@
 #import "MBProgressHUD+MJ.h"
 #import "XBComposeToolBar.h"
 #import "XBComposePhotosView.h"
+#import "XBEmotionKeyboard.h"
 
 @interface ComposeViewController ()<XBComposeToolBarDelegate,UITextViewDelegate,UINavigationControllerDelegate, UIImagePickerControllerDelegate>
+
 
 /** 输入控件 */
 @property(nonatomic,strong)XBTextView *textView;
@@ -23,9 +25,37 @@
 /** 相册（存放拍照或者相册中选择的图片） */
 @property (nonatomic, weak) XBComposePhotosView *photosView;
 
+/**  整个表情键盘*/
+@property (nonatomic, strong) XBEmotionKeyboard *emotionKeyboard;
+/** 是否正在切换键盘 */
+@property (nonatomic, assign) BOOL switchingKeybaord;
+
+@property(nonatomic,assign) CGFloat keyBoadrHeight;
+
 @end
 
 @implementation ComposeViewController
+
+#pragma mark -- lazy load
+
+-(XBEmotionKeyboard *)emotionKeyboard
+{
+    if (!_emotionKeyboard)
+    {
+        self.emotionKeyboard = [[XBEmotionKeyboard alloc]init];
+        
+        // 键盘的宽度
+        self.emotionKeyboard.width = self.view.width;
+        self.emotionKeyboard.height = _keyBoadrHeight;
+        //self.emotionKeyboard.backgroundColor = [UIColor redColor];
+        
+        // 如果键盘宽度不为0，那么系统就会强制让键盘的宽度等于屏幕的宽度：320
+        //        if (self.emotionKeyboard.width > 0) {
+        //            self.emotionKeyboard.width = [UIScreen mainScreen].bounds.size.width;
+        //        }
+    }
+    return _emotionKeyboard;
+}
 
 #pragma mark --life cycle
 - (void)viewDidLoad {
@@ -53,13 +83,13 @@
 }
 
 
-#pragma mark - UITextViewDelegate
+#pragma mark -- UITextViewDelegate
 
 -(void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
 {
     [self.view endEditing:YES];
 }
-#pragma mark - XBComposeToolBarDelegate
+#pragma mark -- XBComposeToolBarDelegate
 
 -(void)composeToolBar:(XBComposeToolBar *)toolBar didClickButton:(XBComposeToolbarButtonType)buttonType
 {
@@ -81,7 +111,7 @@
             break;
             
         case XBComposeToolbarButtonTypeEmotion: // 表情\键盘
-            
+            [self switchKeyboard];
             break;
     }
 }
@@ -123,11 +153,16 @@
      UIKeyboardAnimationCurveUserInfoKey = 7
      }
      */
+    
+    // 如果正在切换键盘，就不要执行后面的代码
+    if (self.switchingKeybaord) return;
+    
     NSDictionary *notiUserInfo = notification.userInfo;
     // 动画的持续时间
     double duration = [notiUserInfo [UIKeyboardAnimationDurationUserInfoKey] doubleValue];
     // 键盘的frame
     CGRect keyBoardF = [notiUserInfo [UIKeyboardFrameEndUserInfoKey] CGRectValue];
+    _keyBoadrHeight = keyBoardF.size.height;
     
     [UIView animateWithDuration:duration animations:^{
         if (keyBoardF.origin.y >self.view.height)
@@ -272,6 +307,39 @@
     ipc.sourceType = type;
     ipc.delegate = self;
     [self presentViewController:ipc animated:YES completion:nil];
+}
+
+/**
+ *  切换键盘
+ */
+- (void)switchKeyboard
+{
+    // self.textView.inputView == nil : 使用的是系统自带的键盘
+    if (self.textView.inputView == nil) { // 切换为自定义的表情键盘
+        self.textView.inputView = self.emotionKeyboard;
+        
+        // 显示键盘按钮
+        self.toolbar.showKeyboardButton = YES;
+    } else { // 切换为系统自带的键盘
+        self.textView.inputView = nil;
+        
+        // 显示表情按钮
+        self.toolbar.showKeyboardButton = NO;
+    }
+    
+    // 开始切换键盘
+    self.switchingKeybaord = YES;
+    
+    // 退出键盘
+    [self.textView endEditing:YES];
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        // 弹出键盘
+        [self.textView becomeFirstResponder];
+        
+        // 结束切换键盘
+        self.switchingKeybaord = NO;
+    });
 }
 
 #pragma mark -- resoponse

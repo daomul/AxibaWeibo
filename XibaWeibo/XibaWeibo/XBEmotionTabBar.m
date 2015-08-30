@@ -9,6 +9,15 @@
 #import "XBEmotionTabBar.h"
 #import "XBEmotionTabBarButton.h"
 
+@interface XBEmotionTabBar()
+
+/**
+ *  作为之前被选中的按钮
+ */
+@property (nonatomic, weak) XBEmotionTabBarButton *selectedBtn;
+
+@end
+
 @implementation XBEmotionTabBar
 
 #pragma mark -- life cycle
@@ -52,7 +61,7 @@
 {
     // 创建按钮
     XBEmotionTabBarButton *btn = [[XBEmotionTabBarButton alloc] init];
-    //[btn addTarget:self action:@selector(tarBarBtnClick:) forControlEvents:UIControlEventTouchDown];
+    [btn addTarget:self action:@selector(tarBarBtnClick:) forControlEvents:UIControlEventTouchDown];
     
     //tag可以知道后面是谁被电击啦
     btn.tag = buttonType;
@@ -74,6 +83,38 @@
     [btn setBackgroundImage:[UIImage imageNamed:selectImage] forState:UIControlStateDisabled];
     
     return btn;
+}
+
+/**
+ *  想通过XBEmotionTabBar的协议执行代理方法，会设置delegate = self ,这时候就会自动调用
+ *
+ *  @param delegate 协议
+ */
+-(void)setDelegate:(id<XBEmotionTarBarDelegate>)delegate
+{
+    _delegate = delegate;
+    
+    // 选中“默认”按钮
+    [self tarBarBtnClick:(XBEmotionTabBarButton *)[self viewWithTag:XBEmotionTabBarButtonTypeDefault]];
+}
+
+/**
+ *  tarBar 点击事件触发
+ *
+ *  @param btn 按钮
+ */
+-(void)tarBarBtnClick:(XBEmotionTabBarButton *)btn
+{
+    self.selectedBtn.enabled = YES;
+    btn.enabled = NO;
+    self.selectedBtn = btn;
+    
+    //点击事件的通知代理
+    if ([self.delegate respondsToSelector:@selector(emotionTarBar:didSelectTarBarButton:)])
+    {
+        [self.delegate emotionTarBar:self didSelectTarBarButton:btn.tag];
+    }
+    
 }
 
 @end

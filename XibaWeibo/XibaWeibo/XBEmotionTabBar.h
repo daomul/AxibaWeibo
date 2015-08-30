@@ -15,6 +15,16 @@ typedef enum {
     XBEmotionTabBarButtonTypeLxh, // 浪小花
 } XBEmotionTabBarButtonType;
 
+//构建一个协议，点击tarBar方法
+@class XBEmotionTabBar;
+@protocol XBEmotionTarBarDelegate <NSObject>
+
+@optional
+-(void)emotionTarBar:(XBEmotionTabBar *)tarBar didSelectTarBarButton:(XBEmotionTabBarButtonType)buttonType;
+
+@end
+
 @interface XBEmotionTabBar : UIView
 
+@property(nonatomic,weak)id<XBEmotionTarBarDelegate>  delegate;
 @end

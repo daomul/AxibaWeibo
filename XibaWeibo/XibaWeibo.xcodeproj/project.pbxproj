@@ -13,6 +13,8 @@
 		16E71E5C1B91F6D6008D5A32 /* XBEmotionButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E71E5B1B91F6D6008D5A32 /* XBEmotionButton.m */; };
 		16E71E631B91FA19008D5A32 /* XBEmotionPopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E71E611B91FA19008D5A32 /* XBEmotionPopView.m */; };
 		16E71E641B91FA19008D5A32 /* XBEmotionPopView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16E71E621B91FA19008D5A32 /* XBEmotionPopView.xib */; };
+		16E860011B93573A00708DA6 /* XBEmotionTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E860001B93573A00708DA6 /* XBEmotionTextView.m */; };
+		16E860041B9360A700708DA6 /* UITextView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E860031B9360A700708DA6 /* UITextView+Extension.m */; };
 		680F12631B70FC590074B6AC /* XBPhotoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 680F12621B70FC590074B6AC /* XBPhotoModel.m */; };
 		683B98F71B6B92C1002001E7 /* XBTitleButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 683B98F61B6B92C1002001E7 /* XBTitleButton.m */; };
 		683B991A1B6B943A002001E7 /* MKAnnotationView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 683B98FA1B6B943A002001E7 /* MKAnnotationView+WebCache.m */; };
@@ -127,6 +129,10 @@
 		16E71E601B91FA19008D5A32 /* XBEmotionPopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBEmotionPopView.h; sourceTree = "<group>"; };
 		16E71E611B91FA19008D5A32 /* XBEmotionPopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBEmotionPopView.m; sourceTree = "<group>"; };
 		16E71E621B91FA19008D5A32 /* XBEmotionPopView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XBEmotionPopView.xib; sourceTree = "<group>"; };
+		16E85FFF1B93573A00708DA6 /* XBEmotionTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBEmotionTextView.h; sourceTree = "<group>"; };
+		16E860001B93573A00708DA6 /* XBEmotionTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBEmotionTextView.m; sourceTree = "<group>"; };
+		16E860021B9360A700708DA6 /* UITextView+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextView+Extension.h"; sourceTree = "<group>"; };
+		16E860031B9360A700708DA6 /* UITextView+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextView+Extension.m"; sourceTree = "<group>"; };
 		680F12611B70FC590074B6AC /* XBPhotoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBPhotoModel.h; sourceTree = "<group>"; };
 		680F12621B70FC590074B6AC /* XBPhotoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBPhotoModel.m; sourceTree = "<group>"; };
 		683B98F51B6B92C1002001E7 /* XBTitleButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBTitleButton.h; sourceTree = "<group>"; };
@@ -532,6 +538,8 @@
 		6860B6D41B775CA800434282 /* view */ = {
 			isa = PBXGroup;
 			children = (
+				16E85FFF1B93573A00708DA6 /* XBEmotionTextView.h */,
+				16E860001B93573A00708DA6 /* XBEmotionTextView.m */,
 				68926DCF1B822123009D0769 /* photosView */,
 				68926DCE1B82210A009D0769 /* toolBar */,
 				68926DBF1B8215DF009D0769 /* keyboard */,
@@ -820,6 +828,8 @@
 				6861863B1B74EE37001159D0 /* NSDate+Extension.m */,
 				68DEA8FA1B75C4D000E3DCDC /* NSString+Extension.h */,
 				68DEA8FB1B75C4D000E3DCDC /* NSString+Extension.m */,
+				16E860021B9360A700708DA6 /* UITextView+Extension.h */,
+				16E860031B9360A700708DA6 /* UITextView+Extension.m */,
 			);
 			name = "Category(类别)";
 			sourceTree = "<group>";
@@ -938,6 +948,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				683B99511B6BB2DB002001E7 /* MJTypeEncoding.m in Sources */,
+				16E860041B9360A700708DA6 /* UITextView+Extension.m in Sources */,
 				6869A4E41B637DCA00825798 /* AFHTTPRequestOperation.m in Sources */,
 				68CAFD0A1B6A14DE002E2F19 /* UIWindow+Extension.m in Sources */,
 				8800F4161B5D16320037F34D /* XBTabBar.m in Sources */,
@@ -950,6 +961,7 @@
 				68DEA8FF1B75E95B00E3DCDC /* XBStatusPhotosView.m in Sources */,
 				683B994E1B6BB2DB002001E7 /* MJMember.m in Sources */,
 				683B99211B6B943A002001E7 /* SDWebImageManager.m in Sources */,
+				16E860011B93573A00708DA6 /* XBEmotionTextView.m in Sources */,
 				68528D841B7252A5009780DF /* MJRefreshFooterView.m in Sources */,
 				880367D11B2EEF8800F075C3 /* XBTiTleMeumController.m in Sources */,
 				881974461B2D95B700C6A4DD /* XBDropdownMenuController.m in Sources */,

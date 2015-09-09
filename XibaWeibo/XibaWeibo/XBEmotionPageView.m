@@ -84,6 +84,16 @@
     CGRect btnFrame = [btn convertRect:btn.bounds toView:nil];
     self.popView.y = CGRectGetMidY(btnFrame) - self.popView.height; // 100
     self.popView.centerX = CGRectGetMidX(btnFrame);
+    
+    // 等会让popView自动消失（定时间，主线城）
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.25 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self.popView removeFromSuperview];
+    });
+    
+    // 点击de时候发出通知
+    NSMutableDictionary *userInfo = [NSMutableDictionary dictionary];
+    userInfo[XBSelectEmotionKey] = btn.emotion;
+    [XBNotificationCenter postNotificationName:XBEmotionDidSelectNotification object:nil userInfo:userInfo];
 }
 
 @end

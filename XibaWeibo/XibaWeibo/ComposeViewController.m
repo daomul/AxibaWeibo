@@ -11,15 +11,17 @@
 #import "XBTextView.h"
 #import "AFNetworking.h"
 #import "MBProgressHUD+MJ.h"
+
 #import "XBComposeToolBar.h"
 #import "XBComposePhotosView.h"
 #import "XBEmotionKeyboard.h"
+#import "XBEmotionTextView.h"
 
 @interface ComposeViewController ()<XBComposeToolBarDelegate,UITextViewDelegate,UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 
 
 /** 输入控件 */
-@property(nonatomic,strong)XBTextView *textView;
+@property(nonatomic,strong)XBEmotionTextView *textView;
 /** 键盘顶部的工具条 */
 @property (nonatomic, weak) XBComposeToolBar *toolbar;
 /** 相册（存放拍照或者相册中选择的图片） */
@@ -182,6 +184,14 @@
 #pragma mark -- private methods
 
 /**
+ *  表情被选中了
+ */
+- (void)emotionDidSelect:(NSNotification *)notification
+{
+    XBEmotion *emotion = notification.userInfo[XBSelectEmotionKey];
+    [self.textView insertEmotion:emotion];
+}
+/**
  * 添加导航栏
  */
 -(void)setupNav
@@ -224,7 +234,7 @@
  */
 -(void)setupTextView
 {
-    XBTextView *textView = [[XBTextView alloc]init];
+    XBEmotionTextView *textView = [[XBEmotionTextView alloc]init];
     textView.frame = self.view.bounds;
     textView.font = [UIFont systemFontOfSize:15];
     textView.placeholder = @"分享新鲜事...";
@@ -248,6 +258,9 @@
     //    UIKeyboardWillHideNotification
     //    UIKeyboardDidHideNotification
     [XBNotificationCenter addObserver:self selector:@selector(keyboardWillChangeFrame:) name:UIKeyboardWillChangeFrameNotification object:nil];
+
+    // 表情选中的通知
+    [XBNotificationCenter addObserver:self selector:@selector(emotionDidSelect:) name:XBEmotionDidSelectNotification object:nil];
 }
 
 /**
@@ -333,12 +346,13 @@
     // 退出键盘
     [self.textView endEditing:YES];
     
+    // 结束切换键盘
+    self.switchingKeybaord = NO;
+    
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         // 弹出键盘
         [self.textView becomeFirstResponder];
         
-        // 结束切换键盘
-        self.switchingKeybaord = NO;
     });
 }
 

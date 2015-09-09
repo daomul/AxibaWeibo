@@ -39,6 +39,9 @@
 - (void)setup
 {
     self.titleLabel.font = [UIFont systemFontOfSize:32];
+    
+    //按钮高亮的时候不调整图片（只能解决不变灰色）
+    self.adjustsImageWhenHighlighted = NO;
 }
 
 /**

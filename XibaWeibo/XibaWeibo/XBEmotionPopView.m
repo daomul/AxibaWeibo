@@ -20,11 +20,30 @@
 {
     return [[[NSBundle mainBundle] loadNibNamed:@"XBEmotionPopView" owner:nil options:nil] lastObject];
 }
--(void)setEmotion:(XBEmotion *)emotion
+
+/**
+ *  弹出图片
+ *
+ *  @param button 当前位置的图片按钮
+ */
+-(void)showFrom:(XBEmotionButton *)button
 {
-    _emotion = emotion;
+    if (!button) {
+        return;
+    }
+
+    // 给popView传递数据
+    self.emotionButton.emotion = button.emotion;
     
-    self.emotionButton.emotion = emotion;
+    // 取得最上面的window
+    UIWindow *window = [[UIApplication sharedApplication].windows lastObject];
+    [window addSubview:self];
+    
+    // 计算出被点击的按钮在window中的frame!
+    CGRect btnFrame = [button convertRect:button.bounds toView:nil];
+    self.y = CGRectGetMidY(btnFrame) - self.height; // 100
+    self.centerX = CGRectGetMidX(btnFrame);
+
 }
 
 @end

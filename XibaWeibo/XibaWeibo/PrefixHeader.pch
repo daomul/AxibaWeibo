@@ -40,5 +40,6 @@
 // 表情选中的通知
 #define XBEmotionDidSelectNotification @"XBEmotionDidSelectNotification"
 #define XBSelectEmotionKey @"XBSelectEmotionKey"
-
+// 删除文字的通知
+#define XBEmotionDidDeleteNotification @"XBEmotionDidDeleteNotification"
 #endif

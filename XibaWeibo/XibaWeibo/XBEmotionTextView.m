@@ -7,6 +7,7 @@
 //
 
 #import "XBEmotionTextView.h"
+#import "XBEmotionAttachment.h"
 #import "XBEmotion.h"
 
 @implementation XBEmotionTextView
@@ -19,9 +20,14 @@
         [self insertText:emotion.code.emoji];
     }
     else if (emotion.png) {
+        
         // 加载图片
-        NSTextAttachment *attch = [[NSTextAttachment alloc] init];
-        attch.image = [UIImage imageNamed:emotion.png];
+        XBEmotionAttachment *attch = [[XBEmotionAttachment alloc] init];
+        
+        //传递emotion数据源
+        attch.emotion = emotion;
+        
+        //设置图片的高度
         CGFloat attchWH = self.font.lineHeight;
         attch.bounds = CGRectMake(0, -4, attchWH, attchWH);
         
@@ -29,14 +35,37 @@
         NSAttributedString *imageStr = [NSAttributedString attributedStringWithAttachment:attch];
         
         // 插入属性文字到光标位置
-        [self insertAttributeText:imageStr];
+        [self insertAttributedText:imageStr settingBlock:^(NSMutableAttributedString *attributedText) {
+            
+            // 设置字体
+            [attributedText addAttribute:NSFontAttributeName value:self.font range:NSMakeRange(0, attributedText.length)];
+        }];
         
-        // 设置字体
-        NSMutableAttributedString *text = (NSMutableAttributedString *)self.attributedText;
-        [text addAttribute:NSFontAttributeName value:self.font range:NSMakeRange(0, 0)];
+        
     }
 }
-
+- (NSString *)fullText
+{
+    NSMutableString *fullText = [NSMutableString string];
+    
+    // 遍历所有的属性文字（帮你把图片、emoji、普通文字分成一份一份的）
+    [self.attributedText enumerateAttributesInRange:NSMakeRange(0, self.attributedText.length) options:0 usingBlock:^(NSDictionary *attrs, NSRange range, BOOL *stop) {
+        // 如果是图片表情
+        XBEmotionAttachment *attch = attrs[@"NSAttachment"];
+        if (attch)
+        {   // 图片
+            [fullText appendString:attch.emotion.chs];
+        }
+        else
+        {   // emoji、普通文本
+            // 获得这个范围内的文字
+            NSAttributedString *str = [self.attributedText attributedSubstringFromRange:range];
+            [fullText appendString:str.string];
+        }
+    }];
+    
+    return fullText;
+}
 /**
  selectedRange :
  1.本来是用来控制textView的文字选中范围

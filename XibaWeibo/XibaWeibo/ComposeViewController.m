@@ -191,6 +191,14 @@
     XBEmotion *emotion = notification.userInfo[XBSelectEmotionKey];
     [self.textView insertEmotion:emotion];
 }
+
+/**
+ *  表情被删除了
+ */
+-(void)emotionDidDelete
+{
+    [self.textView deleteBackward];
+}
 /**
  * 添加导航栏
  */
@@ -261,6 +269,9 @@
 
     // 表情选中的通知
     [XBNotificationCenter addObserver:self selector:@selector(emotionDidSelect:) name:XBEmotionDidSelectNotification object:nil];
+    
+    //删除按钮点击的通知
+    [XBNotificationCenter addObserver:self selector:@selector(emotionDidDelete) name:XBEmotionDidDeleteNotification object:nil];
 }
 
 /**
@@ -390,7 +401,7 @@
     // 2.拼接请求参数
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     params[@"access_token"] = [XBAccountTool account].access_token;
-    params[@"status"] = self.textView.text;
+    params[@"status"] = self.textView.fullText;
     
     // 3.发送请求
     [mgr POST:@"https://upload.api.weibo.com/2/statuses/upload.json" parameters:params constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
@@ -418,7 +429,7 @@
     // 2.拼接请求参数
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     params[@"access_token"] = [XBAccountTool account].access_token;
-    params[@"status"] = self.textView.text;
+    params[@"status"] = self.textView.fullText;
     
     // 3.发送请求
     [mgr POST:@"https://api.weibo.com/2/statuses/update.json" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {

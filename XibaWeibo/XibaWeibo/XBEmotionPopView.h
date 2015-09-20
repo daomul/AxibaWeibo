@@ -8,10 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@class XBEmotion;
+@class XBEmotion,XBEmotionButton;
 @interface XBEmotionPopView : UIView
 
-@property(nonatomic,strong)XBEmotion *emotion;
-
 + (instancetype)popView;
+
+-(void)showFrom:(XBEmotionButton *)button;
 @end

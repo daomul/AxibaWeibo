@@ -15,6 +15,7 @@
 		16E71E641B91FA19008D5A32 /* XBEmotionPopView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16E71E621B91FA19008D5A32 /* XBEmotionPopView.xib */; };
 		16E860011B93573A00708DA6 /* XBEmotionTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E860001B93573A00708DA6 /* XBEmotionTextView.m */; };
 		16E860041B9360A700708DA6 /* UITextView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E860031B9360A700708DA6 /* UITextView+Extension.m */; };
+		16F2A39E1BAAF8FA00335B0C /* XBEmotionAttachment.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F2A39D1BAAF8FA00335B0C /* XBEmotionAttachment.m */; };
 		680F12631B70FC590074B6AC /* XBPhotoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 680F12621B70FC590074B6AC /* XBPhotoModel.m */; };
 		683B98F71B6B92C1002001E7 /* XBTitleButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 683B98F61B6B92C1002001E7 /* XBTitleButton.m */; };
 		683B991A1B6B943A002001E7 /* MKAnnotationView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 683B98FA1B6B943A002001E7 /* MKAnnotationView+WebCache.m */; };
@@ -133,6 +134,8 @@
 		16E860001B93573A00708DA6 /* XBEmotionTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBEmotionTextView.m; sourceTree = "<group>"; };
 		16E860021B9360A700708DA6 /* UITextView+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextView+Extension.h"; sourceTree = "<group>"; };
 		16E860031B9360A700708DA6 /* UITextView+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextView+Extension.m"; sourceTree = "<group>"; };
+		16F2A39C1BAAF8FA00335B0C /* XBEmotionAttachment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBEmotionAttachment.h; sourceTree = "<group>"; };
+		16F2A39D1BAAF8FA00335B0C /* XBEmotionAttachment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBEmotionAttachment.m; sourceTree = "<group>"; };
 		680F12611B70FC590074B6AC /* XBPhotoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBPhotoModel.h; sourceTree = "<group>"; };
 		680F12621B70FC590074B6AC /* XBPhotoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBPhotoModel.m; sourceTree = "<group>"; };
 		683B98F51B6B92C1002001E7 /* XBTitleButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBTitleButton.h; sourceTree = "<group>"; };
@@ -341,6 +344,8 @@
 			children = (
 				16E71E521B91E85D008D5A32 /* XBEmotion.h */,
 				16E71E531B91E85D008D5A32 /* XBEmotion.m */,
+				16F2A39C1BAAF8FA00335B0C /* XBEmotionAttachment.h */,
+				16F2A39D1BAAF8FA00335B0C /* XBEmotionAttachment.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -981,6 +986,7 @@
 				6869A4E61B637DCA00825798 /* AFHTTPSessionManager.m in Sources */,
 				68616EA91B6E0B2D00FC5097 /* XBStatusTableViewCell.m in Sources */,
 				685702AC1B67619C004F10C2 /* XBAccount.m in Sources */,
+				16F2A39E1BAAF8FA00335B0C /* XBEmotionAttachment.m in Sources */,
 				683B98F71B6B92C1002001E7 /* XBTitleButton.m in Sources */,
 				882002211B2869110044E953 /* DiscoverViewController.m in Sources */,
 				683B99271B6B943A002001E7 /* UIImageView+HighlightedWebCache.m in Sources */,
